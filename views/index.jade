@@ -1,5 +1,14 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+
+    section(class="logo")
+        h1= title
+        p Welcome to #{title}
+    div(class="poster-wrapper")
+        div(class="poster-image" id="poster-left")
+            h2 beer-left
+            img(src="images/posters/tom-green-summer-stout.jpg")
+        div(class="poster-image" id="poster-right")
+            h2 beer-right
+            img(src="images/posters/lug-tread.jpg")
