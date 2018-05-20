@@ -7,10 +7,11 @@ block content
         p Welcome to #{title}
     div(class="poster-wrapper")
         div(class="poster-image" id="poster-left")
-            h2 beer-left
+            h2(id="beer-left")= leftBeerName
             p #{level0/10}%
             img(src="images/posters/tom-green-summer-stout.jpg")
         div(class="poster-image" id="poster-right")
-            h2 beer-right
+            h2(id="beer-right")= rightBeerName
+            p(class="beer-short-desc")
             p #{level1/10}%
             img(src="images/posters/lug-tread.jpg")
