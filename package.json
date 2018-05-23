@@ -1,18 +1,63 @@
 {
-  "name": "ki",
-  "version": "0.0.0",
+  "name": "KI",
+  "version": "0.1.0",
+  "description": "Keg Intelligentsia: Kegerator management for the modern era.",
+  "author": "Spencer Dossett, Devan Hurst, Alex Somerville",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PSDoff/ki"
+  },
+  "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "webpack -p --progress --profile --colors && node server",
+    "start:dev": "node server",
+    "lint": "eslint client server"
   },
   "dependencies": {
-    "cookie-parser": "~1.4.3",
-    "debug": "~2.6.9",
-    "express": "~4.16.0",
-    "http-errors": "~1.6.2",
-    "jade": "~1.11.0",
+    "axios": "^0.18.0",
+    "body-parser": "^1.17.2",
+    "connect-history-api-fallback": "^1.3.0",
+    "express": "^4.15.4",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "html-webpack-plugin": "^2.30.1",
     "johnny-five": "^0.15.0",
-    "morgan": "~1.9.0",
-    "stylus": "0.54.5"
+    "mongoose": "^4.11.7",
+    "node-sass": "^4.9.0",
+    "nodemon": "^1.11.0",
+    "prop-types": "^15.6.1",
+    "react": "^15.6.1",
+    "react-bootstrap": "^0.32.1",
+    "react-bootstrap-dialog": "^0.9.4",
+    "react-dom": "^15.6.1",
+    "react-hot-loader": "^3.0.0-beta.6",
+    "react-router": "^4.1.2",
+    "react-router-dom": "^4.1.2",
+    "react-table": "^6.8.0",
+    "sanitize-html": "^1.18.2"
+  },
+  "devDependencies": {
+    "autoprefixer": "^7.1.2",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.2",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "copy-webpack-plugin": "^4.0.1",
+    "css-loader": "^0.28.5",
+    "eslint": "^4.19.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-ava": "^4.5.1",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.7.0",
+    "postcss-assets": "^5.0.0",
+    "postcss-loader": "^2.0.6",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.18.2",
+    "webpack": "^3.5.5",
+    "webpack-dev-middleware": "^1.12.0",
+    "webpack-hot-middleware": "^2.18.2",
+    "webpack-merge": "^4.1.0"
   }
 }
