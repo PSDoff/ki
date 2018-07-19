@@ -49,6 +49,17 @@
           let volume = tap['volume'];
           $(tapId).find('.volume').text(volume);
         });
+        $('body').keydown(function(e){
+          if (e.which == 81) {
+            let tapId = "#tap-left";
+            var volume = $(tapId).find('.volume').text();
+            $(tapId).find('.volume').text(parseInt(volume) - 1);
+          } else if (e.which == 87) {
+            let tapId = "#tap-right";
+            var volume = $(tapId).find('.volume').text();
+            $(tapId).find('.volume').text(parseInt(volume) - 1);
+          }
+        })
       });
     </script>
   </head>
