@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Keg Intelligence</title>
+    <style>
+      body {
+        background-color: #444;
+        margin: 0;
+      }    
+      #taps {
+          width: 1005px;
+          margin: 0 auto;
+      }
+      #tap-left, #tap-right {
+          float: left;
+      }
+      #tap-left {
+          width: 50%;
+          background-color: #111;
+      }
+      #tap-right {
+          width: 50%;
+          background-color: #777;
+      }
+      h3 {
+          font-size: 5rem;
+          color: black;
+          -webkit-text-stroke-width: 0.2rem;
+          -webkit-text-stroke-color: white;
+      }
+      p {
+        color: white;
+      }
+    </style>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script>
+      $(function () {
+        var socket = io();
+        socket.on('initialize', function(tap){
+          let tapId = "#tap-" + tap['id'];
+          $(tapId).find('.name').text(tap['keg']['name']);
+          $(tapId).find('.description').text(tap['keg']['description']);
+          $(tapId).find('.volume').text(tap['volume']);
+          $(tapId).find('.poster').attr('src', "assets/images/" + tap['keg']['image']);
+        });
+        socket.on('pour', function(tap){
+          let tapId = "#tap-" + tap['id'];
+          let volume = tap['volume'];
+          $(tapId).find('.volume').text(volume);
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div class='taps'>
+      <div id='tap-left' class='tap'>
+        <img class='poster' src=''/>
+        <h3 class='name'>Loading</h2>
+        <h3 class='volume'>0</h3>
+        <p class='description'>Loading</p>
+      </div>
+      <div id='tap-right' class='tap'>
+        <img class='poster' src=''/>
+        <h3 class='name'>Loading</h2>
+        <h3 class='volume'>0</h3>
+        <p class='description'>Loading</p>
+      </div>
+    </div>
+  </body>
+  
+</html>

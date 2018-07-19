@@ -1,0 +1,11 @@
+{
+  "name": "keg-intelligence",
+  "version": "0.0.1",
+  "description": "Keg Intelligence",
+  "dependencies": {
+    "express": "^4.16.3",
+    "firebase-admin": "^5.12.1",
+    "johnny-five": "^0.15.0",
+    "socket.io": "^2.1.1"
+  }
+}
