@@ -7,5 +7,14 @@
     "firebase-admin": "^5.12.1",
     "johnny-five": "^0.15.0",
     "socket.io": "^2.1.1"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.24.5",
+    "cssnano": "^4.0.3",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^5.0.0",
+    "gulp-sass": "^4.0.1",
+    "gulp-sourcemaps": "^2.6.4",
+    "nodemon": "^1.18.3"
   }
 }
