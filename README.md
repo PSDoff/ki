@@ -12,6 +12,8 @@
 `$ gulp sass`
 - Development compile for CSS. Unminified, includes source maps.
 
+- Press q or w to decrement the volume of the left and right keg respectively.
+
 #### TODO
 - Add JS minification tasks
 - Add production gulp task variations

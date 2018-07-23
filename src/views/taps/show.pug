@@ -1,0 +1,9 @@
+extends ../layout
+block head_content
+    script
+        include volumeHandler.js
+block body_content
+    div(class=`tap-${tap.key}`)
+        h1= keg.name
+        h3(class='tap__volume') #{tap.volume}
+        p= keg.description

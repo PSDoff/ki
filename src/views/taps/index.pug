@@ -1,0 +1,10 @@
+extends ../layout
+block head_content
+  script
+    include volumeHandler.js
+block body_content
+  for tap, key in taps
+    div(class=`tap-${key}`)
+      h3(class="tap__name") #{tap.keg.name}
+      h4(class="tap__volume") #{tap.volume}
+      p(class="tap__description") #{tap.keg.description}
