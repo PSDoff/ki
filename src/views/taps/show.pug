@@ -4,6 +4,6 @@ block head_content
         include volumeHandler.js
 block body_content
     div(class=`tap-${tap.key}`)
-        h1= keg.name
+        h1= tap.keg.name
         h3(class='tap__volume') #{tap.volume}
-        p= keg.description
+        p= tap.keg.description

@@ -1,0 +1,10 @@
+extends ../sidebar/admin_layout
+    
+block sidebar
+    for keg in kegs
+        ul
+            li
+                a(href='#')= keg.name
+        
+block main_content
+    p= "main content goes here"

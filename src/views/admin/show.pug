@@ -1,4 +1,9 @@
-block content
+extends ../layout
+
+block head_content
+    include ../bootstrap
+    
+block body_content
     h1= keg.name
     img(src=`${__dirname}/src/assets/${keg.image}`, alt=`${keg.name}`)
     p= keg.description

@@ -16,11 +16,11 @@ app.set('views', path.join(__dirname, 'views'));
 
 var indexRouter = require('./routes/index');
 var tapsRouter = require('./routes/taps');
-var kegsRouter = require('./routes/kegs');
+var adminRouter = require('./routes/admin');
 
 app.use('/', indexRouter);
 app.use('/taps', tapsRouter);
-app.use('/kegs', kegsRouter);
+app.use('/admin', adminRouter);
 
 io.on('connection', function(socket){
     console.log('user connected');
