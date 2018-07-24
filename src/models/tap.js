@@ -24,3 +24,15 @@ exports.find = function(id) {
         });
     });
 }
+
+exports.create_get = function() {
+
+}
+
+exports.create_post = function(tap) {
+    return new Promise(function(resolve) {
+        var ref = db.ref(`/taps/${tap.key}`);
+        ref.set(tap);
+        resolve(tap);
+    });
+}

@@ -15,8 +15,12 @@ exports.find = function(id) {
         var ref = db.ref(`/kegs/${id}`);
         ref.once("value").then(function(snap) {
             var keg = snap.val();
-            keg['key'] = snap.key;
-            resolve(keg);
+            if (keg) {
+                keg['key'] = snap.key;
+                resolve(keg);
+            } else {
+                reject(new Error('Keg not found.'));
+            }
         });
     })
 }

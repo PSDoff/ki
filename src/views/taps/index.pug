@@ -1,7 +1,7 @@
 extends ../layout
 block head_content
   script
-    include volumeHandler.js
+    include ../js/volumeHandler.js
 block body_content
   for tap, key in taps
     div(class=`tap-${key}`)

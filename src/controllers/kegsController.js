@@ -1,31 +1,11 @@
 var db = require('../services/firebase');
 
-exports.kegs_index = function(req, res, next) {
-    var kegsRef = db.ref('/kegs');
-    kegsRef.once("value").then(function(snap) {
-        var kegs = snap.val();
-        res.render('kegs/index', {kegs});
-    });
-};
-
-exports.keg_show = function(req, res) {
-    kegRef = db.ref(`/kegs/${req.params.id}`);
-    kegRef.once("value").then(function(snap) {
-        keg = snap.val();
-        if (!keg) {
-            res.render('404');
-            return;
-        }
-        res.render('kegs/show', {keg});
-    });
-};
-
 exports.keg_create_get = function(req, res) {
-    res.send('NOT IMPLEMENTED');
+    res.send('kegs/create');
 };
 
 exports.keg_create_post = function(req, res) {
-    res.send('NOT IMPLEMENTED');
+    res.send('admin/index');
 };
 
 exports.keg_update_get = function(req, res) {
