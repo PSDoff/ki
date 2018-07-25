@@ -1,19 +1,27 @@
-var db = require('../services/firebase');
 var tapModel = require('../models/tap');
 var kegModel = require('../models/keg');
+
+var untappedKeg = {
+    name: "No Keg Selected",
+    description: "Please update this tap."
+};
 
 exports.taps_index = function(req, res) {
     tapModel.findAll().then(function(taps) {
         kegs = Object.keys(taps).map(function(key) {
             return new Promise(function(resolve){
                 let tap = taps[key];
-                kegModel.find(tap.keg).then(function(keg) {
-                    tap['keg'] = keg;
-                    resolve(keg);
-                });
+                kegModel.find(tap.keg)
+                    .then(function(keg) {
+                        tap['keg'] = keg;
+                        resolve(keg);
+                    }).catch(function() {
+                        tap['keg'] = untappedKeg;
+                        resolve(untappedKeg);
+                    });
             });
         });
-        
+
         Promise.all(kegs).then(function() {
             res.render('taps/index', {taps});
         });
@@ -23,10 +31,14 @@ exports.taps_index = function(req, res) {
 exports.tap_show = function(req, res) {
     tapModel.find(req.params.id)
         .then(function(tap){
-            kegModel.find(tap.keg).then(function(keg) {
-                tap['keg'] = keg;
-                res.render('taps/show', {tap});
-            }); 
+            kegModel.find(tap.keg)
+                .then(function(keg) {
+                    tap['keg'] = keg;
+                    res.render('taps/show', {tap})
+                }).catch(function() {
+                    tap['keg'] = untappedKeg;
+                    res.render('taps/show', {tap})
+                });
         }).catch(function() {
             res.render('404');
             return;

@@ -14,7 +14,7 @@ block main_content
             for tap, key in taps
                 div(class=`col-12 col-xs-6 tap-${key}`)
                     p= `Now on ${key} tap`
-                    h2= kegs[tap.keg].name
+                    h2= tap.keg.name
                     p(class='tap__volume')= tap.volume
                     i(class="fas fa-arrow-alt-circle-up")
         div(class='keg-action-buttons')
