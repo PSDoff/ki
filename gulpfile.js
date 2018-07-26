@@ -8,8 +8,8 @@ var reload = browserSync.reload;
 var nodemon = require('nodemon');
 
 // Easy usage variables
-var cssInput = './assets/scss/**/*.scss';
-var cssOutput = './assets/css';
+var cssInput = 'src/assets/scss/**/*.scss';
+var cssOutput = 'src/assets/css';
 
 var sassOptions = {
   errLogToConsole: true,
@@ -28,7 +28,7 @@ gulp.task('browser-sync', ['nodemon'], function() {
 gulp.task('nodemon', function (cb) {
   var called = false;
   return nodemon({
-    script: 'index.js',
+    script: 'src/app.js',
     ignore: [
       'gulpfile.js',
       'node_modules/'
@@ -48,8 +48,8 @@ gulp.task('nodemon', function (cb) {
 });
 
 gulp.task('default', ['browser-sync', 'sass'], function () {
-  gulp.watch('assets/scss/**/*.scss', ['sass']);
-  gulp.watch(['*.html'], reload);
+  gulp.watch('**/*.scss', ['sass']);
+  gulp.watch(['**/*.pug'], reload);
 });
 
 gulp.task('sass', function(){

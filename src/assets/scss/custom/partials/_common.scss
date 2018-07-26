@@ -1,3 +1,22 @@
 * {
   box-sizing: border-box;
 }
+
+body {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 300;
+}
+
+h1, h2, h3, h4, h5, h6,
+p, em, strong, ul, ol {
+  font-weight: 300;
+}
+
+img {
+  max-width: 100%;
+}
+
+div[class*="flex-wrapper"] {
+  display: flex;
+  width: 100%;
+}

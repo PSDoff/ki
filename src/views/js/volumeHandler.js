@@ -12,10 +12,12 @@ $(function () {
             let tapId = ".tap-left";
             var volume = $(tapId).find('.tap__volume').text();
             $(tapId).find('.tap__volume').text(parseInt(volume) - 1);
+            $(tapId).find('[data-volume-remaining]').attr('data-volume-remaining', parseInt(volume) - 1);
         } else if (e.which == 87) {
             let tapId = ".tap-right";
             var volume = $(tapId).find('.tap__volume').text();
             $(tapId).find('.tap__volume').text(parseInt(volume) - 1);
+            $(tapId).find('[data-volume-remaining]').attr('data-volume-remaining', parseInt(volume) - 1);
         }
     })
 });

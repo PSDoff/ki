@@ -2,9 +2,21 @@ extends ../layout
 block head_content
   script
     include ../js/volumeHandler.js
+  style
+    include ../../assets/css/styles.css
 block body_content
-  for tap, key in taps
-    div(class=`tap-${key}`)
-      h3(class="tap__name") #{tap.keg.name}
-      h4(class="tap__volume") #{tap.volume}
-      p(class="tap__description") #{tap.keg.description}
+  div(class=`flex-wrapper`)
+    for tap, key in taps
+      div(class=`tap-${key}`)
+        div(class=`img--tile`)
+          img(src="../../assets/images/lug-tread/lug-tread-1.jpg" alt="Image Title")
+        div(class=`content--tile`)
+          h3(class="tap__name") #{tap.keg.name}
+        div(class=`content--tile` data-volume-original=`${tap.volume}` data-volume-remaining=`${tap.volume}`)
+          h4(class="tap__volume") #{tap.volume}
+        div(class=`img--tile`)
+          img.img--tile(src="../../assets/images/lug-tread/lug-tread-2.jpg" alt="Image Title")
+        div(class=`img--tile`)
+          img.img--tile(src="../../assets/images/lug-tread/lug-tread-3.jpg" alt="Image Title")
+        div(class=`content--tile description`)
+          p(class="tap__description") #{tap.keg.description}

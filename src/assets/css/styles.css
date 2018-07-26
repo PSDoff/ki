@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css?family=Nunito:300,400,900");
 /*! normalize-scss | MIT/GPLv2 License | bit.ly/normalize-scss */
 /* Document
        ========================================================================== */
@@ -455,6 +456,55 @@ template {
 
 * {
   box-sizing: border-box;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 300;
+}
+
+h1, h2, h3, h4, h5, h6,
+p, em, strong, ul, ol {
+  font-weight: 300;
+}
+
+img {
+  max-width: 100%;
+}
+
+div[class*="flex-wrapper"] {
+  display: flex;
+  width: 100%;
+}
+
+div[class^="tap-"],
+div[class*=" tap-"] {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 50%;
+}
+
+div[class*="--tile"] {
+  display: flex;
+  width: 50%;
+  max-height: calc(100vh / 3);
+}
+
+.content--tile {
+  align-items: center;
+  justify-content: center;
+  border: 10px solid #fff;
+}
+
+.description {
+  align-items: flex-start;
+  justify-content: flex-start;
+  overflow-y: auto;
+}
+
+.description p {
+  margin: 0;
 }
 
 /*# sourceMappingURL=styles.css.map */

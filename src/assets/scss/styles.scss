@@ -1,6 +1,13 @@
 //////////////////////////////////////////
 //
-// Vendor Includes (always comes first)
+// Font Imports (always comes first)
+//
+//////////////////////////////////////////
+@import url('https://fonts.googleapis.com/css?family=Nunito:300,400,900');
+
+//////////////////////////////////////////
+//
+// Vendor Includes (always comes before custom styles)
 //
 //////////////////////////////////////////
 @import 'vendor/normalize/normalize'; // Normalize reduces inconsistencies across browsers
