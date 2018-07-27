@@ -1,12 +1,8 @@
 var tapModel = require('../models/tap');
 var kegModel = require('../models/keg');
+var images = require('../services/images').images;
 
-var untappedKeg = {
-    name: "No Keg Selected",
-    description: "Please update this tap."
-};
-
-exports.taps_index = function(req, res) {
+exports.index = function(req, res) {
     tapModel.findAll().then(function(taps) {
         kegs = Object.keys(taps).map(function(key) {
             return new Promise(function(resolve){
@@ -14,10 +10,11 @@ exports.taps_index = function(req, res) {
                 kegModel.find(tap.keg)
                     .then(function(keg) {
                         tap['keg'] = keg;
+                        tap['keg']['images'] = images(keg.key);
                         resolve(keg);
                     }).catch(function() {
-                        tap['keg'] = untappedKeg;
-                        resolve(untappedKeg);
+                        tap['keg'] = kegModel.dummy;
+                        resolve(kegModel.dummy);
                     });
             });
         });
@@ -28,16 +25,17 @@ exports.taps_index = function(req, res) {
     });
 };
 
-exports.tap_show = function(req, res) {
+exports.show = function(req, res) {
     tapModel.find(req.params.id)
         .then(function(tap){
             kegModel.find(tap.keg)
                 .then(function(keg) {
                     tap['keg'] = keg;
-                    res.render('taps/show', {tap})
+                    tap['keg']['images'] = images(keg.key);
+                    res.render('taps/show', {tap});
                 }).catch(function() {
-                    tap['keg'] = untappedKeg;
-                    res.render('taps/show', {tap})
+                    tap['keg'] = kegModel.dummy;
+                    res.render('taps/show', {tap});
                 });
         }).catch(function() {
             res.render('404');
@@ -45,27 +43,20 @@ exports.tap_show = function(req, res) {
         });
 }
 
-
-exports.tap_create_get = function(req, res) {
-    res.send('NOT IMPLEMENTED');
+exports.edit = function(req, res) {
+    res.render('admin/taps/edit', {'id': req.params.id, 'keg': req.params.keg});
 };
 
-exports.tap_create_post = function(req, res) {
-    res.send('NOT IMPLEMENTED');
+exports.update = function(req, res) {
+    tapModel.update(req.params.id, req.params.keg).then(function() {
+        res.redirect('/taps');
+    });
 };
 
-exports.tap_update_get = function(req, res) {
+exports.delete = function(req, res) {
     res.send('NOT IMPLEMENTED: id=' + req.params.id);
 };
 
-exports.tap_update_post = function(req, res) {
-    res.send('NOT IMPLEMENTED: id=' + req.params.id);
-};
-
-exports.tap_delete_get = function(req, res) {
-    res.send('NOT IMPLEMENTED: id=' + req.params.id);
-};
-
-exports.tap_delete_post = function(req, res) {
+exports.destroy = function(req, res) {
     res.send('NOT IMPLEMENTED: id=' + req.params.id);
 };

@@ -1,11 +1,6 @@
 var kegModel = require('../models/keg');
 var tapModel = require('../models/tap');
 
-var untappedKeg = {
-    name: "No Keg Selected",
-    description: "Please update this tap."
-};
-
 exports.index = function(req, res, next) {
     tapModel.findAll().then(function(taps) {
         kegs = kegModel.findAll().then(function(kegs) {
@@ -16,10 +11,9 @@ exports.index = function(req, res, next) {
                 if (keg) {
                     taps[key]['keg'] = keg;
                 } else {
-                    taps[key]['keg'] = untappedKeg;
+                    taps[key]['keg'] = kegModel.dummy;
                 }
             });
-            console.log(taps);
             res.render('admin/index', {taps, kegs});
         });
     });

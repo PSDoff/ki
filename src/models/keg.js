@@ -1,4 +1,16 @@
-var db = require('../services/firebase');
+var db = require('../services/firebase').db;
+
+exports.dummy = {
+    name: "None",
+    details: {
+        ibu: '',
+        alcohol: '0.0%',
+        ingredients: '',
+        description: '',
+        brand: '',
+        tasting: '',
+    }
+};
 
 exports.findAll = function() {
     return new Promise(function(resolve) {
@@ -22,16 +34,18 @@ exports.find = function(id) {
                 reject(new Error('Keg not found.'));
             }
         });
-    })
+    });
 }
 
 exports.create = function(keg) {
     return new Promise(function(resolve) {
         var ref = db.ref('/kegs');
-        ref.push().set(keg).then(function(snap){
-            resolve(snap);
+        var newRef = ref.push();
+        newRef.set(keg).then(function(snap){
+            keg['key'] = newRef.key;
+            resolve(keg);
         });
-    })
+    });
 }
 
 exports.delete = function(id) {

@@ -4,6 +4,15 @@ block sidebar
     for keg, key in kegs
         div(class=`keg keg-${key}`)
         h4= keg.name
+        div(class='keg-action-buttons')
+            a(href=`/admin/taps/left/edit/${key}` class='')
+                i(class="fas fa-arrow-alt-circle-left")
+            a(href=`/admin/taps/right/edit/${key}` class='')
+                i(class="fas fa-arrow-alt-circle-right")
+            a(href=`/admin/kegs/${key}/edit` class='')
+                i(class="far fa-edit")
+            a(href=`/admin/kegs/${key}/delete` class='')
+                i(class="far fa-trash-alt")
         br
 
     a(href="/admin/kegs/create")= "Add new keg"
@@ -16,9 +25,3 @@ block main_content
                     p= `Now on ${key} tap`
                     h2= tap.keg.name
                     p(class='tap__volume')= tap.volume
-                    i(class="fas fa-arrow-alt-circle-up")
-        div(class='keg-action-buttons')
-            a(href=`#` class='')
-                i(class="far fa-edit")
-            a(href=`#` class='')
-                i(class="far fa-trash-alt")

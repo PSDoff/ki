@@ -1,38 +1,43 @@
 var kegModel = require('../models/keg');
+var images = require('../services/images');
 
-exports.create_get = function(req, res) {
-    res.render('admin/kegs/create');
+exports.new = function(req, res) {
+    res.render('admin/kegs/new');
 };
 
-exports.create_post = function(req, res) {
-    var imageName;
-    if (req.files) {
-        var image = req.files.image;
-        var imageName = image.name;
-        image.mv(`${imageUploadFolder}/${imageName}`, function(err) {
-            console.log(err);
-        });
-    }
-
-    keg = {
+exports.create = function(req, res) {
+    kegModel.create({
         name: req.body.name,
-        description: req.body.description,
-        image: imageName,
-    };
-    kegModel.create(keg);
+        details: {
+            ibu: req.body.ibu,
+            alcohol: req.body.alcohol,
+            ingredients: req.body.ingredients,
+            description: req.body.description,
+            tasting: req.body.tasting,
+            brand: req.body.brand
+        }
+    }).then(function(keg) {
+        if (req.files) {
+            images.upload(keg, req.files);
+        }
+    });
 
     res.redirect('/admin');
 };
 
-exports.keg_update_get = function(req, res) {
+exports.show = function(req, res) {
+
+};
+
+exports.edit = function(req, res) {
+    res.render(`admin/kegs/${req.params.id}/edit`);
+};
+
+exports.update = function(req, res) {
     res.send('NOT IMPLEMENTED: id=' + req.params.id);
 };
 
-exports.keg_update_post = function(req, res) {
-    res.send('NOT IMPLEMENTED: id=' + req.params.id);
-};
-
-exports.delete_get = function(req, res) {
+exports.delete = function(req, res) {
     kegModel.find(req.params.id)
         .then(function(keg){
             res.render(`admin/kegs/delete`, {keg, id: req.params.id});
@@ -40,10 +45,11 @@ exports.delete_get = function(req, res) {
             res.render('404');
             return;
         });
-    
 };
 
-exports.delete_post = function(req, res) {
-    kegModel.delete(req.params.id);
+exports.destroy = function(req, res) {
+    kegModel.delete(req.params.id).then(function() {
+        images.delete(req.params.id);
+    });
     res.redirect('/admin');
 };

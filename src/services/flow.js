@@ -1,6 +1,6 @@
 var five = require('johnny-five');
 var board = new five.Board();
-var db = require('./firebase');
+var db = require('./firebase').db;
 
 board.on('ready', function() {
     var sensorLeft = new five.Sensor({

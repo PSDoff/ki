@@ -1,4 +1,4 @@
-var db = require('./firebase');
+var db = require('./firebase').db;
 
 var kegsRef = db.ref('kegs');
 var tapsRef = db.ref('taps');

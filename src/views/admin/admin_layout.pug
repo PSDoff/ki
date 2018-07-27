@@ -1,15 +1,25 @@
-extends ../layout
+doctype html
+html
+    head
+        title K.I. Management
 
-block head_content
-    include ../bootstrap
-    script
-        include ../js/volumeHandler.js
+        link(rel="stylesheet", href="https://use.fontawesome.com/releases/v5.1.1/css/all.css", integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ", crossorigin="anonymous")
+        
+        script(src="/socket.io/socket.io.js")
+        script(src="https://code.jquery.com/jquery-3.3.1.min.js", integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=", crossorigin="anonymous")
 
-block body_content
-    include navbar
-    div(class='container')
-        div(class='row')
-            div(class='col-12 col-xs-3')
-                block sidebar
-            div(class='col-12 col-xs-9')
-                block main_content
+        include ../bootstrap
+        script
+            include ../js/volumeHandler.js
+
+        block head_content
+
+    body
+        include navbar
+        div(class='container')
+            div(class='row')
+                div(class='col-12 col-xs-3')
+                    block sidebar
+                div(class='col-12 col-xs-9')
+                    block main_content
+

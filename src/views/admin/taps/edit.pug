@@ -1,0 +1,8 @@
+extends ../admin_layout
+block sidebar
+    a(href='/admin')
+        i.fas.fa-chevron-left.sorry-alex(style='font-size:100px;')
+block main_content
+    h3= `Would you like to tap a new brew on the ${id} tap?` 
+    form(method='POST' action=`/admin/taps/${id}/update/${keg}` encType="multipart/form-data")
+        button.btn.btn-primary(type='submit') Yes, I've changed the keg!
