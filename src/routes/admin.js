@@ -6,7 +6,7 @@ var kegs_controller = require('../controllers/kegsController');
 var taps_controller = require('../controllers/tapsController');
 
 router.get('/', admin_controller.index);
-router.get('/kegs/new', kegs_controller.create);
+router.get('/kegs/new', kegs_controller.new);
 router.post('/kegs/create', kegs_controller.create);
 router.get('/kegs/:id/delete', kegs_controller.delete);
 router.post('/kegs/:id/destroy', kegs_controller.destroy);
