@@ -6,7 +6,9 @@ exports.dummy = {
         ibu: '',
         alcohol: '0.0%',
         ingredients: '',
-        description: ''
+        description: '',
+        brand: '',
+        tasting: '',
     }
 };
 

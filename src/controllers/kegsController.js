@@ -12,7 +12,9 @@ exports.create = function(req, res) {
             ibu: req.body.ibu,
             alcohol: req.body.alcohol,
             ingredients: req.body.ingredients,
-            description: req.body.description
+            description: req.body.description,
+            tasting: req.body.tasting,
+            brand: req.body.brand
         }
     }).then(function(keg) {
         if (req.files) {
