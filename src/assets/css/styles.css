@@ -668,8 +668,8 @@ div[class*="--tile"] {
 }
 
 .foam-1 {
-  top: -30px;
-  left: 0;
+  top: -25px;
+  left: 5px;
 }
 
 .foam-2 {
@@ -698,7 +698,7 @@ div[class*="--tile"] {
 }
 
 .foam-7 {
-  top: -30px;
+  top: -25px;
   left: 150px;
 }
 

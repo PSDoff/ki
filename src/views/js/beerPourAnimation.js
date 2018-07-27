@@ -1,3 +1,5 @@
+// Credit to https://codepen.io/TimRuby/pen/jcLia
+
 $(document).ready(function() {
   $('.pour') //Pour Me Another Drink, Bartender!
     .delay(2000)
