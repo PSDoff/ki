@@ -1,0 +1,7 @@
+div[class^="tap-"],
+div[class*=" tap-"] {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 50%;
+}

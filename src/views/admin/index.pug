@@ -1,0 +1,24 @@
+extends admin_layout
+
+block sidebar
+    for keg, key in kegs
+        div(class=`keg keg-${key}`)
+        h4= keg.name
+        br
+
+    a(href="/admin/kegs/create")= "Add new keg"
+            
+block main_content
+    div(class='container')
+        div(class='row taps')
+            for tap, key in taps
+                div(class=`col-12 col-xs-6 tap-${key}`)
+                    p= `Now on ${key} tap`
+                    h2= tap.keg.name
+                    p(class='tap__volume')= tap.volume
+                    i(class="fas fa-arrow-alt-circle-up")
+        div(class='keg-action-buttons')
+            a(href=`#` class='')
+                i(class="far fa-edit")
+            a(href=`#` class='')
+                i(class="far fa-trash-alt")

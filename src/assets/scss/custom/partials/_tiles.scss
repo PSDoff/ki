@@ -1,0 +1,45 @@
+div[class*="--tile"] {
+  display: flex;
+  width: 50%;
+  max-height: calc(100vh / 3);
+}
+
+.content--tile {
+  align-items: center;
+  justify-content: center;
+  border: 10px solid #fff;
+}
+
+.tap__name {
+  font-size: 3.1rem;
+  text-align: center;
+}
+
+.volume--tile {
+  background-color: #0e83cd;
+
+  h4 {
+    position: absolute;
+  }
+}
+
+.tap__volume {
+
+  &::after {
+    content: attr(data-volume-percent);
+  }
+}
+
+.description {
+  align-items: flex-start;
+  justify-content: flex-start;
+  overflow-y: auto;
+
+  p {
+    margin: 0;
+  }
+}
+
+.beer-icon {
+  background-color: #F4C44E;
+}
