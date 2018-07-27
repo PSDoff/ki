@@ -1,7 +1,7 @@
 var express = require('express');
 var fileUpload = require('express-fileupload');
 var path = require('path');
-global.imageUploadFolder = path.join(__dirname, 'assets/images/posters');
+global.imageTempFolder = path.join(__dirname, 'tmp/image-upload');
 
 require('./services/flow');
 require('./services/socketEvents');
@@ -10,8 +10,8 @@ var app = express();
 
 app.use(fileUpload({
     limits: { 
-        fileSize: 10 * 1024 * 1024 * 1024,
-        files: 1,
+        fileSize: 5 * 1024 * 1024,
+        files: 3,
     }
 }));
 

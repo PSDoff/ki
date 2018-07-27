@@ -1,4 +1,4 @@
-var db = require('../services/firebase');
+var db = require('../services/firebase').db;
 
 exports.findAll = function() {
     return new Promise(function(resolve) {
@@ -25,14 +25,10 @@ exports.find = function(id) {
     });
 }
 
-exports.create_get = function() {
-
-}
-
-exports.create_post = function(tap) {
-    return new Promise(function(resolve) {
-        var ref = db.ref(`/taps/${tap.key}`);
-        ref.set(tap);
-        resolve(tap);
+exports.update = function(id, keg) {
+    return db.ref(`/taps/${id}`).set({
+        'keg': keg,
+        'volume': 10000,
+        'initialVolume': 10000
     });
 }

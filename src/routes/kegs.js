@@ -3,11 +3,11 @@ var router = express.Router();
 
 var kegs_controller = require('../controllers/kegsController');
 
-router.get('/create', kegs_controller.keg_create_get);
-router.post('/create', kegs_controller.keg_create_post);
-router.get('/:id/delete', kegs_controller.keg_delete_get);
-router.post('/:id/delete', kegs_controller.keg_delete_post);
-router.get('/:id/update', kegs_controller.keg_update_get);
-router.post('/:id/update', kegs_controller.keg_update_post);
+router.get('/new', kegs_controller.new);
+router.post('/create', kegs_controller.create);
+router.get('/:id/delete', kegs_controller.delete);
+router.post('/:id/destroy', kegs_controller.destroy);
+router.get('/:id/edit', kegs_controller.edit);
+router.post('/:id/update', kegs_controller.update);
 
 module.exports = router;

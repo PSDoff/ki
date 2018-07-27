@@ -1,0 +1,31 @@
+extends ../admin_layout
+block sidebar
+    a(href='/admin')
+        i.fas.fa-chevron-left.sorry-alex(style='font-size:100px;')
+block main_content
+    form(method='POST' action='/admin/kegs/create' encType="multipart/form-data")
+        div.form-group
+            label(for='name') Name
+            input#name.form-control(type='text', placeholder="Beau's Lug Tread" name='name')
+        div.form-group
+            label(for='alcohol') Alc./Vol %
+            input#name.form-control(type='number', placeholder="5.2", step="0.1", min=0 name='alcohol')
+        div.form-group
+            label(for='ibu') IBU
+            input#name.form-control(type='number', placeholder="21" name='ibu')
+        div.form-group
+            label(for='ingredients') Ingredients
+            input#name.form-control(type='text', placeholder="Local Spring Water, Organic Barley & Wheat Malts, Organic Hops, Brewer’s Yeast." name='ingredients')
+        div.form-group
+            label(for='description') Description
+            input#description.form-control(type='text', placeholder="Beau’s year-round flagship beer is Lug-Tread, a certified organic lagered ale." name='description')
+        div.form-group
+            label(for='logo') Logo Image
+            input#image.form-control(type='file', name='logo')
+        div.form-group
+            label(for='lifestyle1') Lifestyle Image 1
+            input#image.form-control(type='file', name='lifestyle1')
+        div.form-group
+            label(for='lifestyle2') Lifestyle Image 2
+            input#image.form-control(type='file', name='lifestyle2')
+        button.btn.btn-primary(type='submit') Add Keg
