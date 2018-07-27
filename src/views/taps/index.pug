@@ -12,8 +12,8 @@ block body_content
           img(src="../../assets/images/lug-tread/lug-tread-1.jpg" alt="Image Title")
         div(class=`content--tile`)
           h3(class="tap__name") #{tap.keg.name}
-        div(class=`content--tile` data-volume-original=`${tap.volume}` data-volume-remaining=`${tap.volume}`)
-          h4(class="tap__volume") #{tap.volume}
+        div(class=`content--tile`)
+          h4(class="tap__volume" data-volume-original=`${tap.volume}` data-volume-remaining=`${tap.volume}` data-volume-percent=`100`)
         div(class=`img--tile`)
           img.img--tile(src="../../assets/images/lug-tread/lug-tread-2.jpg" alt="Image Title")
         div(class=`img--tile`)

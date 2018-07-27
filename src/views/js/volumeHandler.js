@@ -10,14 +10,26 @@ $(function () {
     $('body').keydown(function(e){
         if (e.which == 81) {
             let tapId = ".tap-left";
-            var volume = $(tapId).find('.tap__volume').text();
-            $(tapId).find('.tap__volume').text(parseInt(volume) - 1);
+            var volume = $(tapId).find('[data-volume-remaining]').attr('data-volume-remaining'),
+                originalVolume = $(tapId).find('[data-volume-original]').attr('data-volume-original'),
+                percentVolume;
+
             $(tapId).find('[data-volume-remaining]').attr('data-volume-remaining', parseInt(volume) - 1);
+            percentVolume = (volume / originalVolume) * 100;
+            console.log("Left tap remaining: " + percentVolume.toFixed(0) + "%");
+
+            $(tapId).find('[data-volume-percent]').attr('data-volume-percent', percentVolume.toFixed(0));
         } else if (e.which == 87) {
             let tapId = ".tap-right";
-            var volume = $(tapId).find('.tap__volume').text();
-            $(tapId).find('.tap__volume').text(parseInt(volume) - 1);
+            var volume = $(tapId).find('[data-volume-remaining]').attr('data-volume-remaining'),
+                originalVolume = $(tapId).find('[data-volume-original]').attr('data-volume-original'),
+                percentVolume;
+
             $(tapId).find('[data-volume-remaining]').attr('data-volume-remaining', parseInt(volume) - 1);
+            percentVolume = (volume / originalVolume) * 100;
+            console.log("Left tap remaining: " + percentVolume.toFixed(0) + "%");
+
+            $(tapId).find('[data-volume-percent]').attr('data-volume-percent', percentVolume.toFixed(0));
         }
     })
 });
