@@ -15,6 +15,14 @@ div[class*="--tile"] {
   text-align: center;
 }
 
+.volume--tile {
+  background-color: #0e83cd;
+
+  h4 {
+    position: absolute;
+  }
+}
+
 .tap__volume {
 
   &::after {
@@ -30,4 +38,8 @@ div[class*="--tile"] {
   p {
     margin: 0;
   }
+}
+
+.beer-icon {
+  background-color: #F4C44E;
 }
