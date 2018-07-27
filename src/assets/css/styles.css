@@ -461,11 +461,20 @@ template {
 body {
   font-family: 'Nunito', sans-serif;
   font-weight: 300;
+  font-size: 10px;
 }
 
 h1, h2, h3, h4, h5, h6,
 p, em, strong, ul, ol {
   font-weight: 300;
+}
+
+h4 {
+  font-size: 2.5rem;
+}
+
+p, ul, ol {
+  font-size: 1rem;
 }
 
 img {
@@ -495,6 +504,11 @@ div[class*="--tile"] {
   align-items: center;
   justify-content: center;
   border: 10px solid #fff;
+}
+
+.tap__name {
+  font-size: 3.1rem;
+  text-align: center;
 }
 
 .description {
