@@ -15,8 +15,11 @@ div[class*="--tile"] {
   text-align: center;
 }
 
-.volume--tile {
+.volume--tile[class*="--tile"] {
   background-color: #0e83cd;
+  max-height: initial;
+  width: 100%;
+  height: calc((100vh / 3) * 2);
 
   h4 {
     position: absolute;

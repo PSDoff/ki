@@ -1,0 +1,8 @@
+div(class=`tap-${key}`)
+  div(class=`img--tile`)
+    img(src="../../assets/images/lug-tread/lug-tread-1.jpg" alt="Image Title")
+  div(class=`content--tile`)
+    h3(class="tap__name") #{tap.keg.name}
+  div(class=`content--tile volume--tile`)
+    include ../snippets/beer-animation
+    h4(class="tap__volume" data-volume-original=`${tap.volume}` data-volume-remaining=`${tap.volume}` data-volume-percent=`100`)

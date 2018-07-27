@@ -511,11 +511,14 @@ div[class*="--tile"] {
   text-align: center;
 }
 
-.volume--tile {
+.volume--tile[class*="--tile"] {
   background-color: #0e83cd;
+  max-height: initial;
+  width: 100%;
+  height: calc((100vh / 3) * 2);
 }
 
-.volume--tile h4 {
+.volume--tile[class*="--tile"] h4 {
   position: absolute;
 }
 
@@ -538,13 +541,13 @@ div[class*="--tile"] {
 }
 
 .beer-container {
-  height: 247px;
+  height: calc((100vh / 3) * 2);
   margin: 0 auto;
   overflow: hidden;
   position: relative;
   top: 5px;
   left: -24px;
-  width: 248px;
+  width: 100%;
 }
 
 .beer-container div {
@@ -564,10 +567,10 @@ div[class*="--tile"] {
   border: 10px solid #fff;
   border-top: 0;
   border-radius: 0 0 30px 30px;
-  height: 200px;
+  height: 90%;
   left: 14px;
   bottom: 0;
-  width: 200px;
+  width: 90%;
 }
 
 .liquid {
@@ -577,7 +580,7 @@ div[class*="--tile"] {
   bottom: 0;
   height: 0px;
   overflow: hidden;
-  width: 180px;
+  width: 100%;
   transition: height 500ms linear;
 }
 
@@ -585,7 +588,7 @@ div[class*="--tile"] {
   background-color: rgba(255, 255, 255, 0.25);
   bottom: -10px;
   content: '';
-  height: 200px;
+  height: 100%;
   left: -40px;
   position: absolute;
   transform: rotate(30deg);
