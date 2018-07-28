@@ -4,4 +4,5 @@ div[class*=" tap-"] {
   flex-direction: row;
   flex-wrap: wrap;
   width: 50%;
+  overflow: hidden;
 }

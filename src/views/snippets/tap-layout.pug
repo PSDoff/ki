@@ -7,3 +7,5 @@ div(class=`tap-${key}` data-volume-original=`${tap.initialVolume}` data-volume-r
     h3(class="tap__name") #{tap.keg.name}
   div(class=`content--tile volume--tile`)
     include ../snippets/beer-animation
+    div(class=`keg-info`)
+      //h4(class=`abv`) #{tap.keg.details.alcohol}

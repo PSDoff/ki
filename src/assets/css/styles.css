@@ -492,6 +492,7 @@ div[class*=" tap-"] {
   flex-direction: row;
   flex-wrap: wrap;
   width: 50%;
+  overflow: hidden;
 }
 
 div[class*="--tile"] {
@@ -540,8 +541,8 @@ div[class*="--tile"] {
   margin: 0 auto;
   overflow: hidden;
   position: relative;
-  top: 5px;
-  left: -24px;
+  top: 15px;
+  left: -194px;
   width: 100%;
 }
 
@@ -767,6 +768,13 @@ div[class*="foam-"] {
 .foam-14 {
   top: -36px;
   right: -20px;
+}
+
+.tap-right .beer-container {
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+  right: -194px;
+  left: initial;
 }
 
 /*# sourceMappingURL=styles.css.map */
