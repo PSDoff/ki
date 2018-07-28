@@ -486,18 +486,35 @@ div[class*="flex-wrapper"] {
   width: 100%;
 }
 
-div[class^="tap-"],
-div[class*=" tap-"] {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 50%;
+main {
+  height: 100vh;
+  overflow: hidden;
 }
 
-div[class*="--tile"] {
+.flex {
   display: flex;
-  width: 50%;
-  max-height: calc(100vh / 3);
+}
+
+.tap-poster {
+  width: calc(70vw);
+  text-align: center;
+  position: relative;
+}
+
+.tap-poster img {
+  max-height: 100vh;
+}
+
+.tap-poster .pour-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 70vw;
+  height: 100vh;
+}
+
+.tap-info {
+  width: calc(30vw);
 }
 
 .content--tile {
@@ -508,17 +525,6 @@ div[class*="--tile"] {
 .tap__name {
   font-size: 3.1rem;
   text-align: center;
-}
-
-.volume--tile[class*="--tile"] {
-  background-color: #0e83cd;
-  max-height: initial;
-  width: 100%;
-  height: calc((100vh / 3) * 2);
-}
-
-.volume--tile[class*="--tile"] h4 {
-  position: absolute;
 }
 
 .description {
@@ -536,13 +542,17 @@ div[class*="--tile"] {
 }
 
 .beer-container {
-  height: calc((100vh / 3) * 2);
+  height: 100vh;
   margin: 0 auto;
   overflow: hidden;
   position: relative;
-  top: 5px;
-  left: -24px;
   width: 100%;
+  opacity: 0;
+  transition: opacity 1000ms linear;
+}
+
+.beer-container.pouring {
+  opacity: 0.6;
 }
 
 .beer-container div {
@@ -559,33 +569,20 @@ div[class*="--tile"] {
   top: 10%;
 }
 
-.pour {
-  position: absolute;
-  left: 45%;
-  width: 20px;
-  height: 0px;
-  background-color: #edaf32;
-  border-radius: 10px;
-}
-
 .beaker {
-  border: 10px solid #fff;
   border-top: 0;
-  border-radius: 0 0 30px 30px;
-  height: 90%;
-  left: 15px;
-  bottom: 5px;
-  width: 60%;
+  height: 100%;
+  width: 100%;
 }
 
 .liquid {
   background-color: #edaf32;
   border: 10px solid #edaf32;
-  border-radius: 0 0 20px 20px;
   bottom: 0;
   height: 0px;
   overflow: hidden;
   width: 100%;
+  height: 100%;
   transition: height 1000ms linear;
 }
 
@@ -605,7 +602,7 @@ div[class*="--tile"] {
   -webkit-animation-name: bubble;
   -webkit-animation-iteration-count: infinite;
   -webkit-animation-timing-function: linear;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: white;
   bottom: 0;
   border-radius: 10px;
   height: 20px;
@@ -687,86 +684,6 @@ div[class*="--tile"] {
   bottom: 10px;
   left: -10px;
   transition: bottom 1000ms linear;
-}
-
-div[class*="foam-"] {
-  float: left;
-  position: absolute;
-  z-index: 999;
-  width: 50px;
-  height: 50px;
-  border-radius: 30px;
-  background-color: #fefefe;
-}
-
-.foam-1 {
-  top: -25px;
-  left: 0;
-}
-
-.foam-2 {
-  top: -35px;
-  left: 7%;
-}
-
-.foam-3 {
-  top: -25px;
-  left: 14%;
-}
-
-.foam-4 {
-  top: -35px;
-  left: 20%;
-}
-
-.foam-5 {
-  top: -30px;
-  left: 27%;
-}
-
-.foam-6 {
-  top: -20px;
-  left: 35%;
-}
-
-.foam-7 {
-  top: -25px;
-  left: 41%;
-}
-
-.foam-8 {
-  top: -25px;
-  left: 48%;
-}
-
-.foam-9 {
-  top: -35px;
-  left: 55%;
-}
-
-.foam-10 {
-  top: -30px;
-  left: 62%;
-}
-
-.foam-11 {
-  top: -20px;
-  left: 70%;
-}
-
-.foam-12 {
-  top: -25px;
-  left: 75%;
-}
-
-.foam-13 {
-  top: -30px;
-  left: 83%;
-}
-
-.foam-14 {
-  top: -36px;
-  right: -20px;
 }
 
 /*# sourceMappingURL=styles.css.map */

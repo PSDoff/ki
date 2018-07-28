@@ -1,6 +1,7 @@
 extends ../layout
 block head_content
 block body_content
-    div(class=`flex-wrapper`)
+    main(class=`multi-tap`)
         for tap, key in taps
-            include ../snippets/tap-layout
+            section(class=`tap-${key} flex` data-volume-original=`${tap.initialVolume}` data-volume-remaining=`${tap.volume}` data-volume-percent=`${percentageRemaining}`)
+                include ../snippets/tap-layout

@@ -1,7 +1,30 @@
-div[class^="tap-"],
-div[class*=" tap-"] {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 50%;
+main {
+    height: 100vh;
+    overflow: hidden;
+}
+
+.flex {
+    display: flex;
+}
+
+.tap-poster {
+    width: calc(70vw);
+    text-align: center;
+    position: relative;
+
+    img {
+        max-height: 100vh;
+    }
+
+    .pour-animation {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 70vw;
+        height: 100vh;
+    }
+}
+
+.tap-info {
+    width: calc(30vw)
 }

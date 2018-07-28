@@ -1,9 +1,12 @@
 - percentageRemaining = (tap.volume/tap.initialVolume)*100
 
-div(class=`tap-${key}` data-volume-original=`${tap.initialVolume}` data-volume-remaining=`${tap.volume}` data-volume-percent=`${percentageRemaining}`)
-  div(class=`img--tile`)
+aside(class=`tap-info`)
+article(class=`tap-poster`)
     img(src=`${tap.keg.images.logo}` alt=`${tap.keg.name}`)
-  div(class=`content--tile`)
-    h3(class="tap__name") #{tap.keg.name}
-  div(class=`content--tile volume--tile`)
-    include ../snippets/beer-animation
+    div(class=`pour-animation`)
+        include ../snippets/beer-animation
+
+
+
+    //div(class=`content--tile`)
+    //    h3(class="tap__name") #{tap.keg.name}
