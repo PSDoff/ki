@@ -511,16 +511,15 @@ div[class*="--tile"] {
   text-align: center;
 }
 
-.volume--tile {
+.volume--tile[class*="--tile"] {
   background-color: #0e83cd;
+  max-height: initial;
+  width: 100%;
+  height: calc((100vh / 3) * 2);
 }
 
-.volume--tile h4 {
+.volume--tile[class*="--tile"] h4 {
   position: absolute;
-}
-
-.tap__volume::after {
-  content: attr(data-volume-percent);
 }
 
 .description {
@@ -538,17 +537,27 @@ div[class*="--tile"] {
 }
 
 .beer-container {
-  height: 247px;
+  height: calc((100vh / 3) * 2);
   margin: 0 auto;
   overflow: hidden;
   position: relative;
   top: 5px;
   left: -24px;
-  width: 248px;
+  width: 100%;
 }
 
 .beer-container div {
   position: absolute;
+}
+
+.handle {
+  right: -85px;
+  height: 80%;
+  width: 80px;
+  border: 35px solid white;
+  border-left: none;
+  border-radius: 0 20px 20px 0;
+  top: 10%;
 }
 
 .pour {
@@ -564,10 +573,10 @@ div[class*="--tile"] {
   border: 10px solid #fff;
   border-top: 0;
   border-radius: 0 0 30px 30px;
-  height: 200px;
-  left: 14px;
-  bottom: 0;
-  width: 200px;
+  height: 90%;
+  left: 15px;
+  bottom: 5px;
+  width: 75%;
 }
 
 .liquid {
@@ -577,15 +586,15 @@ div[class*="--tile"] {
   bottom: 0;
   height: 0px;
   overflow: hidden;
-  width: 180px;
-  transition: height 500ms linear;
+  width: 100%;
+  transition: height 1500ms linear;
 }
 
 .liquid:after {
   background-color: rgba(255, 255, 255, 0.25);
   bottom: -10px;
   content: '';
-  height: 200px;
+  height: 100%;
   left: -40px;
   position: absolute;
   transform: rotate(30deg);
@@ -610,54 +619,78 @@ div[class*="--tile"] {
   }
   50% {
     background-color: rgba(255, 255, 255, 0.2);
-    bottom: 80px;
+    bottom: 40%;
   }
   100% {
     background-color: rgba(255, 255, 255, 0);
-    bottom: 160px;
+    bottom: 90%;
   }
 }
 
 .bubble1 {
-  left: 10px;
+  left: 10%;
   -webkit-animation-delay: 1000ms;
   -webkit-animation-duration: 1000ms;
 }
 
 .bubble2 {
-  left: 50px;
+  left: 20%;
   -webkit-animation-delay: 700ms;
   -webkit-animation-duration: 1100ms;
 }
 
 .bubble3 {
-  left: 100px;
+  left: 30%;
   -webkit-animation-delay: 1200ms;
   -webkit-animation-duration: 1300ms;
 }
 
 .bubble4 {
-  left: 130px;
+  left: 40%;
   -webkit-animation-delay: 1100ms;
   -webkit-animation-duration: 700ms;
 }
 
 .bubble5 {
-  left: 170px;
+  left: 50%;
   -webkit-animation-delay: 1300ms;
   -webkit-animation-duration: 800ms;
+}
+
+.bubble6 {
+  left: 60%;
+  -webkit-animation-delay: 1000ms;
+  -webkit-animation-duration: 1000ms;
+}
+
+.bubble7 {
+  left: 70%;
+  -webkit-animation-delay: 700ms;
+  -webkit-animation-duration: 1100ms;
+}
+
+.bubble8 {
+  left: 80%;
+  -webkit-animation-delay: 1200ms;
+  -webkit-animation-duration: 1300ms;
+}
+
+.bubble9 {
+  left: 90%;
+  -webkit-animation-delay: 1100ms;
+  -webkit-animation-duration: 700ms;
 }
 
 /* Foam */
 .beer-foam {
   position: absolute;
+  width: 100%;
   bottom: 10px;
   left: -10px;
-  transition: bottom 500ms linear;
+  transition: bottom 1500ms linear;
 }
 
-.foam-1, .foam-2, .foam-3, .foam-4,
-.foam-5, .foam-6, .foam-7 {
+div[class*="foam-"] {
   float: left;
   position: absolute;
   z-index: 999;
@@ -669,37 +702,72 @@ div[class*="--tile"] {
 
 .foam-1 {
   top: -25px;
-  left: 5px;
+  left: 0;
 }
 
 .foam-2 {
   top: -35px;
-  left: 20px;
+  left: 7%;
 }
 
 .foam-3 {
   top: -25px;
-  left: 50px;
+  left: 14%;
 }
 
 .foam-4 {
   top: -35px;
-  left: 80px;
+  left: 20%;
 }
 
 .foam-5 {
   top: -30px;
-  left: 110px;
+  left: 27%;
 }
 
 .foam-6 {
   top: -20px;
-  left: 140px;
+  left: 35%;
 }
 
 .foam-7 {
   top: -25px;
-  left: 150px;
+  left: 41%;
+}
+
+.foam-8 {
+  top: -25px;
+  left: 48%;
+}
+
+.foam-9 {
+  top: -35px;
+  left: 55%;
+}
+
+.foam-10 {
+  top: -30px;
+  left: 62%;
+}
+
+.foam-11 {
+  top: -20px;
+  left: 70%;
+}
+
+.foam-12 {
+  top: -25px;
+  left: 75%;
+}
+
+.foam-13 {
+  top: -30px;
+  left: 83%;
+}
+
+.foam-14 {
+  top: -36px;
+  left: 91%;
 }
 
 /*# sourceMappingURL=styles.css.map */
