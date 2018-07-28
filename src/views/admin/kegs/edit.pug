@@ -1,0 +1,40 @@
+extends ../admin_layout
+block sidebar
+    a(href='/admin')
+        i.fas.fa-chevron-left.sorry-alex(style='font-size:100px;')
+block main_content
+    form(method='POST' action=`/admin/kegs/${keg.key}/update` encType="multipart/form-data")
+        div.form-group
+            label(for='name') Name
+            input#name.form-control(type='text', value=`${keg.name}` name='name')
+        div.form-group
+            label(for='brand') Brand
+            input#description.form-control(type='text', value=`${keg.brand}` name='brand')
+        div.form-group
+            label(for='alcohol') Alc./Vol %
+            input#name.form-control(type='number', value=`${keg.alcohol}`, step="0.1", min=0 name='alcohol')
+        div.form-group
+            label(for='ibu') IBU
+            input#name.form-control(type='number', value=`${keg.ibu}` name='ibu')
+        div.form-group
+            label(for='ingredients') Ingredients
+            input#name.form-control(type='text', value=`${keg.ingredients}` name='ingredients')
+        div.form-group
+            label(for='tasting') Tasting Notes
+            input#description.form-control(type='text', value=`${keg.tasting}` name='tasting')
+        div.form-group
+            label(for='description') Description
+            input#description.form-control(type='text', value=`${keg.description}` name='description')
+        div.form-group
+            label(for='logo') Logo Image
+            img(src=`${keg.images.logo}` alt=`${keg.name}` width='200px')
+            input#image.form-control(type='file', name='logo')
+        div.form-group
+            label(for='lifestyle1') Lifestyle Image 1
+            img(src=`${keg.images.lifestyle1}` alt=`${keg.name}` width='200px')
+            input#image.form-control(type='file', name='lifestyle1')
+        div.form-group
+            label(for='lifestyle2') Lifestyle Image 2
+            img(src=`${keg.images.lifestyle2}` alt=`${keg.name}` width='200px')
+            input#image.form-control(type='file', name='lifestyle2')
+        button.btn.btn-primary(type='submit') Update Keg

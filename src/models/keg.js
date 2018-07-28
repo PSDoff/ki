@@ -48,6 +48,15 @@ exports.create = function(keg) {
     });
 }
 
+exports.update = function(id, keg) {
+    return new Promise(function(resolve) {
+        db.ref(`/kegs/${id}`).set(keg).then(function(snap){
+            keg['key'] = id;
+            resolve(keg);
+        });
+    });
+};
+
 exports.delete = function(id) {
     return new Promise(function(resolve) {
         var ref = db.ref(`/kegs/${id}`);

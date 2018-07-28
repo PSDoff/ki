@@ -1,6 +1,6 @@
 var tapModel = require('../models/tap');
 var kegModel = require('../models/keg');
-var images = require('../services/images').images;
+var images = require('../services/images');
 
 exports.index = function(req, res) {
     tapModel.findAll().then(function(taps) {
@@ -10,7 +10,7 @@ exports.index = function(req, res) {
                 kegModel.find(tap.keg)
                     .then(function(keg) {
                         tap['keg'] = keg;
-                        tap['keg']['images'] = images(keg.key);
+                        tap['keg']['images'] = images.all(keg.key);
                         resolve(keg);
                     }).catch(function() {
                         tap['keg'] = kegModel.dummy;
@@ -31,7 +31,7 @@ exports.show = function(req, res) {
             kegModel.find(tap.keg)
                 .then(function(keg) {
                     tap['keg'] = keg;
-                    tap['keg']['images'] = images(keg.key);
+                    tap['keg']['images'] = images.all(keg.key);
                     res.render('taps/show', {tap});
                 }).catch(function() {
                     tap['keg'] = kegModel.dummy;

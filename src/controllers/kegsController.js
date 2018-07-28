@@ -6,23 +6,15 @@ exports.new = function(req, res) {
 };
 
 exports.create = function(req, res) {
-    kegModel.create({
-        name: req.body.name,
-        details: {
-            ibu: req.body.ibu,
-            alcohol: req.body.alcohol,
-            ingredients: req.body.ingredients,
-            description: req.body.description,
-            tasting: req.body.tasting,
-            brand: req.body.brand
-        }
-    }).then(function(keg) {
+    kegModel.create(req.body).then(function(keg) {
         if (req.files) {
-            images.upload(keg, req.files);
+            images.upload(keg, req.files).then(function(){
+                res.redirect('/admin');
+            });
+        } else {
+            res.redirect('/admin');
         }
     });
-
-    res.redirect('/admin');
 };
 
 exports.show = function(req, res) {
@@ -30,11 +22,24 @@ exports.show = function(req, res) {
 };
 
 exports.edit = function(req, res) {
-    res.render(`admin/kegs/${req.params.id}/edit`);
+    kegModel.find(req.params.id)
+        .then(function(keg) {
+            keg['images'] = images.all(keg.key);
+            res.render(`admin/kegs/edit`, {keg});
+        }).catch(function() {
+            res.render('404');
+            return;
+        });
 };
 
 exports.update = function(req, res) {
-    res.send('NOT IMPLEMENTED: id=' + req.params.id);
+    kegModel.update(req.params.id, req.body).then(function(keg) {
+        if (req.files) {
+            images.upload(keg, req.files).then(function(){
+                res.redirect(`/admin/kegs/${req.params.id}/edit`);
+            });
+        }
+    });
 };
 
 exports.delete = function(req, res) {

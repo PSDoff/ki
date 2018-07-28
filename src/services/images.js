@@ -4,25 +4,32 @@ var fs = require('fs');
 var imageTypes = ['logo', 'lifestyle1', 'lifestyle2'];
 
 exports.upload = function(keg, files) {
-    images = imageTypes.forEach(function(name) {
-        let image = files[name];
-        if (image) {
-            let imageName = image.name;
-            let imagePath = `${imageTempFolder}/${imageName}`
-            image.mv(imagePath).then(function(){
-                let options = {
-                    destination: `keg-images/${keg.key}/${name}`,
+    return new Promise(function(resolve){
+        images = imageTypes.map(function(name) {
+            return new Promise(function(resolve) {
+                let image = files[name];
+                if (image) {
+                    let imageName = image.name;
+                    let imagePath = `${imageTempFolder}/${imageName}`
+                    image.mv(imagePath).then(function(){
+                        let options = {
+                            destination: `keg-images/${keg.key}/${name}`,
+                        }
+                        bucket.upload(imagePath, options, function(err, file){
+                            fs.unlink(imagePath);
+                            resolve('Uploaded.');
+                        })
+                    });
+                } else {
+                    resolve('No image specified for this type.');
                 }
-                bucket.upload(imagePath, options, function(err, file){
-                    fs.unlink(imagePath);
-                    console.log(file);
-                    return file;
-                })
             });
-        }
+        });
+        
+        Promise.all(images).then(function() {
+            resolve('All images uploaded.');
+        });
     });
-
-    return images;
 }
 
 exports.delete = function(id) {
@@ -32,7 +39,7 @@ exports.delete = function(id) {
     }, function(errors) {});
 }
 
-exports.images = function(id) {
+exports.all = function(id) {
     return {
         "logo": getImageUrl(id, 'logo'),
         "lifestyle1": getImageUrl(id, 'lifestyle1'),
