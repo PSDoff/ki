@@ -522,10 +522,6 @@ div[class*="--tile"] {
   position: absolute;
 }
 
-.tap__volume::after {
-  content: attr(data-volume-percent);
-}
-
 .description {
   align-items: flex-start;
   justify-content: flex-start;
@@ -570,7 +566,7 @@ div[class*="--tile"] {
   height: 90%;
   left: 14px;
   bottom: 0;
-  width: 90%;
+  width: 50%;
 }
 
 .liquid {

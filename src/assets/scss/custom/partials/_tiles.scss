@@ -26,13 +26,6 @@ div[class*="--tile"] {
   }
 }
 
-.tap__volume {
-
-  &::after {
-    content: attr(data-volume-percent);
-  }
-}
-
 .description {
   align-items: flex-start;
   justify-content: flex-start;
