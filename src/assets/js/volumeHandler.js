@@ -15,6 +15,8 @@ $(function () {
             }, 2500);
             // tapContainer.find('.liquid').css('height', percentVolume + '%');
             // tapContainer.find('.beer-foam').css('bottom', percentVolume + '%');
+
+            tapContainer.find('.volume').css('height', percentVolume + '%');
             tapContainer.attr('data-volume-percent', percentVolume);
         }
     });
@@ -36,6 +38,8 @@ $(function () {
                 setTimeout(function () {
                     $(tapId).find('.beer-container').removeClass('pouring');
                 }, 2500);
+
+                $(tapId).find('.volume').css('height', percentVolume + '%');
             }
         } else if (e.which == 87) {
             let tapId = ".tap-right";
@@ -53,6 +57,8 @@ $(function () {
                 setTimeout(function(){
                     $(tapId).find('.beer-container').removeClass('pouring');
                 }, 2500);
+
+                $(tapId).find('.volume').css('height', percentVolume + '%');
             }
         }
     })

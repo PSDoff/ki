@@ -517,28 +517,8 @@ main {
   width: calc(30vw);
 }
 
-.content--tile {
-  align-items: center;
-  justify-content: center;
-}
-
-.tap__name {
-  font-size: 3.1rem;
-  text-align: center;
-}
-
-.description {
-  align-items: flex-start;
-  justify-content: flex-start;
-  overflow-y: auto;
-}
-
-.description p {
-  margin: 0;
-}
-
-.beer-icon {
-  background-color: #F4C44E;
+.tap-info {
+  position: relative;
 }
 
 .beer-container {
@@ -684,6 +664,39 @@ main {
   bottom: 10px;
   left: -10px;
   transition: bottom 1000ms linear;
+}
+
+.beer-battery {
+  width: 90px;
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  margin-left: -45px;
+}
+
+.beer-battery .volume-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: calc(100% - 30px);
+  width: 100%;
+  display: block;
+  padding: 15px 5px 0;
+}
+
+.beer-battery .volume-container .volume {
+  content: '';
+  position: absolute;
+  display: block;
+  background: #edaf32;
+  width: calc(100% - 10px);
+  height: 100%;
+  left: 5px;
+  bottom: 15px;
+}
+
+.beer-battery img {
+  position: relative;
 }
 
 /*# sourceMappingURL=styles.css.map */

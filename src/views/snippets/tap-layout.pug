@@ -1,6 +1,10 @@
 - percentageRemaining = (tap.volume/tap.initialVolume)*100
 
 aside(class=`tap-info`)
+    div(class=`beer-battery`)
+        div(class=`volume-container`)
+            div(class=`volume`)
+        img(src=`/assets/images/svg/beer-keg-battery.svg`)
 article(class=`tap-poster`)
     img(src=`${tap.keg.images.logo}` alt=`${tap.keg.name}`)
     div(class=`pour-animation`)
