@@ -1,6 +1,12 @@
-- percentageRemaining = (tap.volume/tap.initialVolume)*100
-
 aside(class=`tap-info`)
+    div(id=`tap-name` class=`tap-info-tab`)
+        h3(class="tap__name") #{tap.keg.name}
+    div(id=`tap-supplier` class=`tap-info-tab`)
+        img(src=`/assets/images/svg/beaus-beige-logo.svg`)
+    div(id=`tap-abv` class=`tap-info-tab`)
+        h3(class="tap__name") #{tap.keg.alcohol}
+
+    // Beer volume / Beer Battery (could be a snippet)
     div(class=`beer-battery`)
         div(class=`volume-container`)
             div(class=`volume`)

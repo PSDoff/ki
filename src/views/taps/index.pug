@@ -3,5 +3,6 @@ block head_content
 block body_content
     main(class=`multi-tap`)
         for tap, key in taps
+            - percentageRemaining = (tap.volume/tap.initialVolume)*100
             section(class=`tap-${key} flex` data-volume-original=`${tap.initialVolume}` data-volume-remaining=`${tap.volume}` data-volume-percent=`${percentageRemaining}`)
                 include ../snippets/tap-layout

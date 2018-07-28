@@ -4,11 +4,10 @@ $(function () {
 
     $('[class*="tap-"]').each(function() {
 
-        $(this).find('.liquid') // I Said Fill 'Er Up!
-            .delay(4100)
+        $(this).find('.beer-battery .volume') // I Said Fill 'Er Up!
             .animate({
                 height: parseInt($(this).data('volumePercent')).toFixed(0) + '%'
-            }, 2500);
+            }, 700);
     })
 
 });
