@@ -4,5 +4,5 @@ block sidebar
         i.fas.fa-chevron-left.sorry-alex(style='font-size:100px;')
 block main_content
     h3= `Are you sure you want to delete ${keg.name}?` 
-    form(method='POST' action=`/admin/kegs/${id}/delete` encType="multipart/form-data")
+    form(method='POST' action=`/admin/kegs/${id}/destroy` encType="multipart/form-data")
         button.btn.btn-primary(type='submit') Yes, delete this keg.
