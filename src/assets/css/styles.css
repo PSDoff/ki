@@ -503,7 +503,6 @@ div[class*="--tile"] {
 .content--tile {
   align-items: center;
   justify-content: center;
-  border: 10px solid #fff;
 }
 
 .tap__name {
@@ -551,9 +550,9 @@ div[class*="--tile"] {
 }
 
 .handle {
-  right: -85px;
+  right: -125px;
   height: 80%;
-  width: 80px;
+  width: 120px;
   border: 35px solid white;
   border-left: none;
   border-radius: 0 20px 20px 0;
@@ -576,7 +575,7 @@ div[class*="--tile"] {
   height: 90%;
   left: 15px;
   bottom: 5px;
-  width: 75%;
+  width: 60%;
 }
 
 .liquid {
@@ -587,7 +586,7 @@ div[class*="--tile"] {
   height: 0px;
   overflow: hidden;
   width: 100%;
-  transition: height 1500ms linear;
+  transition: height 1000ms linear;
 }
 
 .liquid:after {
@@ -687,7 +686,7 @@ div[class*="--tile"] {
   width: 100%;
   bottom: 10px;
   left: -10px;
-  transition: bottom 1500ms linear;
+  transition: bottom 1000ms linear;
 }
 
 div[class*="foam-"] {
@@ -767,7 +766,7 @@ div[class*="foam-"] {
 
 .foam-14 {
   top: -36px;
-  left: 91%;
+  right: -20px;
 }
 
 /*# sourceMappingURL=styles.css.map */
