@@ -1,10 +1,16 @@
 aside(class=`tap-info`)
+    // Supplier brand (black on white)
+    div(id=`tap-supplier`)
+        img(src=`/assets/images/svg/beaus-colour-logo.svg`)
+
+    // Generic box info tabs
     div(id=`tap-name` class=`tap-info-tab`)
         h3(class="tap__name") #{tap.keg.name}
-    div(id=`tap-supplier` class=`tap-info-tab`)
-        img(src=`/assets/images/svg/beaus-beige-logo.svg`)
     div(id=`tap-abv` class=`tap-info-tab`)
-        h3(class="tap__name") #{tap.keg.alcohol}
+        h5(class="tap__abv") ABV: #{tap.keg.alcohol}%
+    div(id=`tap-abv` class=`tap-info-tab`)
+        h5 Tasting Notes
+        p(class="tap__tasting-notes") #{tap.keg.tasting}
 
     // Beer volume / Beer Battery (could be a snippet)
     div(class=`beer-battery`)

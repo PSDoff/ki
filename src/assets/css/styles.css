@@ -653,6 +653,66 @@ main {
   -webkit-animation-duration: 700ms;
 }
 
+.bubble10 {
+  left: 15%;
+  -webkit-animation-delay: 1200ms;
+  -webkit-animation-duration: 1200ms;
+}
+
+.bubble11 {
+  left: 18%;
+  -webkit-animation-delay: 1200ms;
+  -webkit-animation-duration: 400ms;
+}
+
+.bubble12 {
+  left: 25%;
+  -webkit-animation-delay: 120ms;
+  -webkit-animation-duration: 1400ms;
+}
+
+.bubble13 {
+  left: 35%;
+  -webkit-animation-delay: 800ms;
+  -webkit-animation-duration: 800ms;
+}
+
+.bubble14 {
+  left: 45%;
+  -webkit-animation-delay: 1400ms;
+  -webkit-animation-duration: 500ms;
+}
+
+.bubble15 {
+  left: 55%;
+  -webkit-animation-delay: 700ms;
+  -webkit-animation-duration: 1200ms;
+}
+
+.bubble16 {
+  left: 65%;
+  -webkit-animation-delay: 300ms;
+  -webkit-animation-duration: 1500ms;
+}
+
+.bubble17 {
+  left: 75%;
+  -webkit-animation-delay: 1220ms;
+  -webkit-animation-duration: 1100ms;
+}
+
+.bubble18 {
+  left: 85%;
+  -webkit-animation-delay: 1400ms;
+  -webkit-animation-duration: 1100ms;
+}
+
+.bubble19 {
+  left: 95%;
+  -webkit-animation-delay: 700ms;
+  -webkit-animation-duration: 900ms;
+}
+
 /* Foam */
 .beer-foam {
   position: absolute;
@@ -698,7 +758,7 @@ main {
 .tap-info {
   width: calc(30vw);
   z-index: 5;
-  padding-top: 20px;
+  padding: 20px 10px 0;
 }
 
 .tap-info h3 {
@@ -708,17 +768,29 @@ main {
   font-weight: 500;
 }
 
-.tap-info .tap-info-tab {
-  width: 40vw;
-  padding: 20px;
-  border: 5px solid #000;
-  border-left: 0;
-  background: #000;
-  margin-bottom: 20px;
+.tap-info h5 {
+  font-size: 1.4rem;
+  margin: 0;
+  color: #fff;
+  font-weight: 500;
 }
 
-.tap-info .tap-info-tab:last-child {
+.tap-info-tab {
+  width: 40vw;
+  padding: 10px;
+  border: 3px solid #fff;
+  border-left: 0;
+  background: #000;
+  margin: 0 0 10px -10px;
+  color: #fff;
+}
+
+.tap-info-tab:last-child {
   margin-bottom: 0;
+}
+
+#tap-supplier {
+  margin-bottom: 50px;
 }
 
 /*# sourceMappingURL=styles.css.map */
