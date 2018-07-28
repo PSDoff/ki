@@ -6,7 +6,7 @@ $(function () {
 
         var volume = data.tap.volume,
             originalVolume = data.tap.initialVolume,
-            percentVolume = ((volume / originalVolume) * 100).toFixed(2);
+            percentVolume = ((volume / originalVolume) * 100).toFixed(0);
 
         if (tapContainer.length > 0) {
             tapContainer.find('.liquid').css('height', percentVolume + '%');

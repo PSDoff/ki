@@ -13,7 +13,8 @@ $(document).ready(function () {
     $('.liquid') // I Said Fill 'Er Up!
         .delay(3400)
         .animate({
-            height: parseInt($(this).parents('[data-volume-percent]').data('volume-percentage')).toFixed(0) + '%'
+            // height: parseInt($(this).parents('[data-volume-percent]').data('volume-percentage')).toFixed(0) + '%'
+            height: '100%';
         }, 2500);
 
     $('.beer-foam') // Keep that Foam Rollin' Toward the Top! Yahooo!

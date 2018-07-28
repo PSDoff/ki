@@ -1,11 +1,6 @@
 extends ../layout
 block head_content
-  script
-    include ../js/volumeHandler.js
-    include ../js/beerPourAnimation.js
-  style
-    include ../../assets/css/styles.css
 block body_content
-  div(class=`flex-wrapper`)
-    for tap, key in taps
-      include ../snippets/tap-layout
+    div(class=`flex-wrapper`)
+        for tap, key in taps
+            include ../snippets/tap-layout
