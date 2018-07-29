@@ -24,3 +24,15 @@ main {
         height: 100vh;
     }
 }
+
+#maintenance-overlay {
+    opacity: 0.5; 
+    background: #F00; 
+    width: 100%;
+    height: 100%; 
+    z-index: 10;
+    top: 0; 
+    left: 0; 
+    position: fixed;
+    display: none;
+  }

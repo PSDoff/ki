@@ -26,5 +26,6 @@ exports.testMode = function(req, res, next) {
 
 exports.maintenanceMode = function(req, res, next) {
     config.maintenanceMode = !config.maintenanceMode;
+    io.emit('maintenance', {enabled: config.maintenanceMode});
     res.redirect('/admin');
 }

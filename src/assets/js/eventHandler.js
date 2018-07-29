@@ -1,7 +1,7 @@
 $(function () {
     var socket = io();
 
-    socket.on('update volume', function (data) {
+    socket.on('update volume', function(data) {
         var tapContainer = $(".tap-" + data.key);
 
         var volume = data.tap.volume,
@@ -18,6 +18,15 @@ $(function () {
 
             tapContainer.find('.volume').css('height', percentVolume + '%');
             tapContainer.attr('data-volume-percent', percentVolume);
+        }
+    });
+
+    socket.on('maintenance', function(data) {
+        var maintenanceOverlay = $("#maintenance-overlay");
+        if (data.enabled) {
+            maintenanceOverlay.show();
+        } else {
+            maintenanceOverlay.hide();
         }
     });
 
