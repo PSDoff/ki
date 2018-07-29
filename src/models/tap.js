@@ -25,10 +25,10 @@ exports.find = function(id) {
     });
 }
 
-exports.update = function(id, keg) {
+exports.update = function(id, keg, volume=config.defaultKegVolume) {
     return db.ref(`/taps/${id}`).set({
         'keg': keg,
-        'volume': 10000,
-        'initialVolume': 10000
+        'volume': volume,
+        'initialVolume': volume
     });
 }
