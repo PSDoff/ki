@@ -1,4 +1,5 @@
 exports.testMode = false;
+exports.maintenanceMode = false;
 
 exports.pourFinishingFrequency = 3000;
 

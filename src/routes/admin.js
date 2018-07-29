@@ -17,4 +17,7 @@ router.post('/kegs/:id/destroy', kegs_controller.destroy);
 router.get('/taps/:id/edit/:keg', taps_controller.edit);
 router.post('/taps/:id/update/:keg', taps_controller.update);
 
+router.get('/testmode', admin_controller.testMode);
+router.get('/maintenancemode', admin_controller.maintenanceMode);
+
 module.exports = router;

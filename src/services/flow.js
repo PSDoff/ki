@@ -31,8 +31,12 @@ board.on('ready', function() {
 });
 
 function pour(tap, volume) {
-    updateTap(tap, volume);
-    updatePour(tap, volume);
+    if (!config.maintenanceMode) {
+        updateTap(tap, volume);
+        if (!config.testMode) {
+            updatePour(tap, volume);
+        }
+    }
 }
 
 function updateTap(tap, quantity) {
@@ -68,18 +72,11 @@ function checkForCompletePours() {
 
 setInterval(checkForCompletePours, config.pourFinishingFrequency);
 
-function testLeftPour() {
-    pour('left', 1);
+function testPours() {
+    if (config.testMode) {
+        pour('left', 1);
+        pour('right', 1);
+    }
 }
 
-function testRightPour() {
-    pour('right', 1);
-}
-
-if (config.testMode) {
-    setInterval(testLeftPour, 100);
-}
-
-if (config.testMode) {
-    setInterval(testRightPour, 100);
-}
+setInterval(testPours, 100);

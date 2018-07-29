@@ -14,7 +14,17 @@ exports.index = function(req, res, next) {
                     taps[key]['keg'] = kegModel.dummy;
                 }
             });
-            res.render('admin/index', {taps, kegs});
+            res.render('admin/index', {taps, kegs, config});
         });
     });
 };
+
+exports.testMode = function(req, res, next) {
+    config.testMode = !config.testMode;
+    res.redirect('/admin');
+}
+
+exports.maintenanceMode = function(req, res, next) {
+    config.maintenanceMode = !config.maintenanceMode;
+    res.redirect('/admin');
+}
