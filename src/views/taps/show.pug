@@ -1,7 +1,7 @@
 extends ../layout
 block head_content
-    script
-        include ../../assets/js/volumeHandler.js
-        include ../../assets/js/beerPourAnimation.js
 block body_content
-  include ../snippets/tap-layout
+    main(class=`single-tap`)
+        - percentageRemaining = (tap.volume/tap.initialVolume)*100
+        section(class=`tap-${tap.key} flex` data-volume-original=`${tap.initialVolume}` data-volume-remaining=`${tap.volume}` data-volume-percent=`${percentageRemaining}`)
+            include ../snippets/tap-layout

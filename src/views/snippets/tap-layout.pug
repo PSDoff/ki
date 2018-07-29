@@ -1,9 +1,28 @@
-- percentageRemaining = (tap.volume/tap.initialVolume)*100
+aside(class=`tap-info`)
+    // Supplier brand (black on white)
+    div(id=`tap-supplier`)
+        img(src=`/assets/images/svg/beaus-colour-logo.svg`)
 
-div(class=`tap-${key}` data-volume-original=`${tap.initialVolume}` data-volume-remaining=`${tap.volume}` data-volume-percent=`${percentageRemaining}`)
-  div(class=`img--tile`)
+    // Generic box info tabs
+    div(id=`tap-name` class=`tap-info-tab`)
+        h3(class="tap__name") #{tap.keg.name}
+    div(id=`tap-abv` class=`tap-info-tab`)
+        h5(class="tap__abv") ABV: #{tap.keg.alcohol}%
+    div(id=`tap-abv` class=`tap-info-tab`)
+        h5 Tasting Notes
+        p(class="tap__tasting-notes") #{tap.keg.tasting}
+
+    // Beer volume / Beer Battery (could be a snippet)
+    div(class=`beer-battery`)
+        div(class=`volume-container`)
+            div(class=`volume`)
+        img(src=`/assets/images/svg/beer-keg-battery.svg`)
+article(class=`tap-poster`)
     img(src=`${tap.keg.images.logo}` alt=`${tap.keg.name}`)
-  div(class=`content--tile`)
-    h3(class="tap__name") #{tap.keg.name}
-  div(class=`content--tile volume--tile`)
-    include ../snippets/beer-animation
+    div(class=`pour-animation`)
+        include ../snippets/beer-animation
+
+
+
+    //div(class=`content--tile`)
+    //    h3(class="tap__name") #{tap.keg.name}

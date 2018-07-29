@@ -1,0 +1,44 @@
+.tap-info {
+    width: calc(30vw);
+    z-index: 5;
+    padding: 20px 10px 0;
+
+    h3 {
+        font-size: 1.8rem;
+        margin: 0;
+        color: #fff;
+        font-weight: 500;
+    }
+
+    h5 {
+        font-size: 1.4rem;
+        margin: 0;
+        color: #fff;
+        font-weight: 500;
+    }
+}
+
+.tap-info-tab {
+    width: 40vw;
+    padding: 10px;
+    border: 3px solid #fff;
+    border-left: 0;
+    background: #000;
+    margin: 0 0 10px -10px;
+    color: #fff;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    p {
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+#tap-supplier {
+    margin-bottom: 50px;
+}
