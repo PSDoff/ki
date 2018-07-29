@@ -789,6 +789,10 @@ main {
   margin-bottom: 0;
 }
 
+.tap-info-tab p:last-child {
+  margin-bottom: 0;
+}
+
 #tap-supplier {
   margin-bottom: 50px;
 }
