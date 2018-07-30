@@ -33,9 +33,8 @@ board.on('ready', function() {
 function pour(tap, volume) {
     if (!config.maintenanceMode) {
         updateTap(tap, volume);
-        if (!config.testMode) {
-            updatePour(tap, volume);
-        }
+        updatePour(tap, volume);
+        firePouringEvent(tap);
     }
 }
 
@@ -47,6 +46,20 @@ function updateTap(tap, quantity) {
             volume = volume - quantity;
         }
         return volume;
+    });
+}
+
+function firePouringEvent(tap) {
+    io.emit('pouring', {
+        tap: tap,
+        volume: currentPours[tap].volume
+    });
+}
+
+function firePouringCompleteEvent(pour, key) {
+    io.emit('pouring complete', {
+        tap: key,
+        volume: pour.volume
     });
 }
 
@@ -64,6 +77,7 @@ function checkForCompletePours() {
             pour.previousVolume = pour.volume;
         } else {
             var clonedPour = Object.assign({}, pour);
+            firePouringCompleteEvent(clonedPour, key);
             currentPours[key] = { 'volume': 0, 'previousVolume': 0 };
             pourModel.create(clonedPour, key);
         }

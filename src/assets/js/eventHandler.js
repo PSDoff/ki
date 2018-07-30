@@ -21,6 +21,14 @@ $(function () {
         }
     });
 
+    socket.on('pouring', function(data) {
+        console.log(`${data.tap} pouring: ${data.volume}`);
+    });
+
+    socket.on('pouring complete', function(data) {
+        console.log(`${data.tap} complete: ${data.volume}`);
+    });
+
     socket.on('maintenance', function(data) {
         var maintenanceOverlay = $("#maintenance-overlay");
         if (data.enabled) {
