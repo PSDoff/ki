@@ -1,9 +1,12 @@
+.beer-battery-container {
+    width: 25vw;
+}
+
 .beer-battery {
     width: 90px;
-    position: absolute;
-    bottom: 15px;
-    left: 50%;
-    margin-left: -45px;
+    display: table;
+    position: relative;
+    margin-right: 50px;
 
     .volume-container {
         position: absolute;
@@ -24,6 +27,16 @@
             left: 5px;
             bottom: 15px;
         }
+    }
+
+    .percent-remaining {
+        font-size: 1.9rem;
+        display: block;
+        position: absolute;
+        top: 45px;
+        z-index: 5;
+        width: 100%;
+        text-align: center;
     }
 
     img {

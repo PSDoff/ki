@@ -493,10 +493,12 @@ main {
 
 .flex {
   display: flex;
+  flex-direction: column;
 }
 
 .tap-poster {
-  width: calc(70vw);
+  width: calc(100vw);
+  height: 87vh;
   text-align: center;
   position: relative;
 }
@@ -509,8 +511,26 @@ main {
   position: absolute;
   top: 0;
   left: 0;
-  width: 70vw;
-  height: 100vh;
+  width: 100vw;
+  height: 87vh;
+}
+
+.footer-tap-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 90vw;
+  margin-left: 5vw;
+  padding: 40px;
+  display: flex;
+}
+
+.multi-tap {
+  display: flex;
+}
+
+.multi-tap > section {
+  width: 50%;
 }
 
 #maintenance-overlay {
@@ -734,12 +754,15 @@ main {
   transition: bottom 1000ms linear;
 }
 
+.beer-battery-container {
+  width: 25vw;
+}
+
 .beer-battery {
   width: 90px;
-  position: absolute;
-  bottom: 15px;
-  left: 50%;
-  margin-left: -45px;
+  display: table;
+  position: relative;
+  margin-right: 50px;
 }
 
 .beer-battery .volume-container {
@@ -763,20 +786,40 @@ main {
   bottom: 15px;
 }
 
+.beer-battery .percent-remaining {
+  font-size: 1.9rem;
+  display: block;
+  position: absolute;
+  top: 45px;
+  z-index: 5;
+  width: 100%;
+  text-align: center;
+}
+
 .beer-battery img {
   position: relative;
 }
 
 .tap-info {
-  width: calc(30vw);
+  width: calc(100vw);
+  height: 13vh;
   z-index: 5;
-  padding: 20px 10px 0;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f9f7e7;
+  color: #3a350e;
+}
+
+.tap-info h1 {
+  font-size: 4.0rem;
+  margin: 15px 0;
 }
 
 .tap-info h3 {
   font-size: 1.8rem;
   margin: 0;
-  color: #fff;
   font-weight: 500;
 }
 
@@ -787,26 +830,49 @@ main {
   font-weight: 500;
 }
 
-.tap-info-tab {
-  width: 40vw;
-  padding: 10px;
-  border: 3px solid #fff;
-  border-left: 0;
+.footer-tap-info {
   background: #000;
-  margin: 0 0 10px -10px;
-  color: #fff;
+  border: 5px solid #f9f7e7;
+  border-bottom: 0;
+  color: #f9f7e7;
 }
 
-.tap-info-tab:last-child {
+.footer-tap-info h5 {
+  font-size: 3.5rem;
+  margin: 0 0 15px;
+  text-align: center;
+}
+
+.footer-tap-info p {
+  font-size: 2.0rem;
+  text-align: center;
   margin-bottom: 0;
 }
 
-.tap-info-tab p:last-child {
-  margin-bottom: 0;
+#tap-abv {
+  position: absolute;
+  left: 0;
+  background: #f9f7e7;
+  border: 5px solid #000;
+  border-left: 0;
+  padding: 20px 60px;
+  color: white;
+  font-size: 5rem;
+  bottom: 10vh;
+  color: #000;
+  text-align: center;
 }
 
-#tap-supplier {
-  margin-bottom: 50px;
+#tap-abv h5 {
+  margin: 0;
+}
+
+#tap-abv h6 {
+  margin: 0;
+}
+
+#tap-supplier img {
+  width: 300px;
 }
 
 /*# sourceMappingURL=styles.css.map */

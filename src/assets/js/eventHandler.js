@@ -7,13 +7,14 @@ $(function () {
         var volume = data.tap.volume,
             originalVolume = data.tap.initialVolume,
             percentVolume = ((volume / originalVolume) * 100).toFixed(2);
+            roundedPercentVolume = ((volume / originalVolume) * 100).toFixed(0);
 
         if (tapContainer.length > 0) {
             tapContainer.find('.beer-container').addClass('pouring');
             setTimeout(function () {
                 tapContainer.find('.beer-container').removeClass('pouring');
             }, 2500);
-            // tapContainer.find('.liquid').css('height', percentVolume + '%');
+            tapContainer.find('.beer-battery .percent-remaining').text(percentVolume);
             // tapContainer.find('.beer-foam').css('bottom', percentVolume + '%');
 
             tapContainer.find('.volume').css('height', percentVolume + '%');
@@ -57,6 +58,7 @@ $(function () {
                 }, 2500);
 
                 $(tapId).find('.volume').css('height', percentVolume + '%');
+                $(tapId).find('.beer-battery .percent-remaining').text(percentVolume);
             }
         } else if (e.which == 87) {
             let tapId = ".tap-right";
@@ -76,6 +78,7 @@ $(function () {
                 }, 2500);
 
                 $(tapId).find('.volume').css('height', percentVolume + '%');
+                $(tapId).find('.beer-battery .percent-remaining').text(percentVolume);
             }
         }
     })
