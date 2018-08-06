@@ -1,9 +1,10 @@
+global.config = require('./config/config');
+
 var express = require('express');
 var fileUpload = require('express-fileupload');
 var path = require('path');
 
 global.imageTempFolder = path.join(__dirname, 'tmp/image-upload');
-global.config = require('./config/config');
 
 require('./services/flow');
 require('./services/socketEvents');

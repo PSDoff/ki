@@ -6,6 +6,7 @@ var sourcemaps = require('gulp-sourcemaps');
 var browserSync = require('browser-sync');
 var reload = browserSync.reload;
 var nodemon = require('nodemon');
+var env = require('gulp-env');
 
 // Easy usage variables
 var cssInput = 'src/assets/scss/**/*.scss';
@@ -15,6 +16,10 @@ var sassOptions = {
   errLogToConsole: true,
   outputStyle: 'expanded'
 };
+
+env({vars: {
+  NODE_ENV: 'dev'
+}});
 
 gulp.task('browser-sync', ['nodemon'], function() {
   browserSync({
