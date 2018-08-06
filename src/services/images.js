@@ -48,5 +48,5 @@ exports.all = function(id) {
 }
 
 getImageUrl = function(id, name) {
-    return `https://firebasestorage.googleapis.com/v0/b/${config.firebase.name}.appspot.com/o/keg-images%2F${id}%2F${name}?alt=media`
+    return `https://firebasestorage.googleapis.com/v0/b/keg-intelligence.appspot.com/o/keg-images%2F${id}%2F${name}?alt=media`
 }
