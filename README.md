@@ -1,7 +1,10 @@
 #KI
 
-`npm install`
+### Run Production
 `node index.js`
+
+### Run Dev
+`$ gulp`
 
 ### Gulp Tasks
 `$ gulp`

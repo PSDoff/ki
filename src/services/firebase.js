@@ -1,10 +1,10 @@
 var base = require("firebase-admin");
-var serviceAccount = require("../config/serviceAccountKey.json");
+var serviceAccount = require(`../config/firebase/${config.firebase.name}.json`);
 
 base.initializeApp({
   credential: base.credential.cert(serviceAccount),
-  databaseURL: "https://keg-intelligence.firebaseio.com",
-  storageBucket: "keg-intelligence.appspot.com"
+  databaseURL: `https://${config.firebase.name}.firebaseio.com`,
+  storageBucket: `${config.firebase.name}.appspot.com`
 });
 
 exports.db = base.database();
