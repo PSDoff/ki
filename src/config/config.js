@@ -5,7 +5,7 @@ const global = {
     testMode: false,
     maintenanceMode: false,
     pourFinishingFrequency: 3000,
-    defaultKegVolume: 10000,
+    defaultKegVolume: 5000,
 };
 
 const dev = {

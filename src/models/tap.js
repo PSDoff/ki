@@ -1,5 +1,11 @@
 var db = require('../services/firebase').db;
 
+exports.dummy = {
+    initialVolume: config.defaultKegVolume,
+    keg: 'dummy',
+    volume: config.defaultKegVolume
+};
+
 exports.findAll = function() {
     return new Promise(function(resolve) {
         var ref = db.ref('/taps');
