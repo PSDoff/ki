@@ -39,6 +39,10 @@ $(function () {
         }
     });
 
+    socket.on('keg tapped', function(data) {
+        location.reload();
+    });
+
     $('body').keydown(function (e) {
         if (e.which == 81) {
             let tapId = ".tap-left";

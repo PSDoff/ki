@@ -48,8 +48,9 @@ exports.edit = function(req, res) {
 };
 
 exports.update = function(req, res) {
-    tapModel.update(req.params.id, req.params.keg).then(function() {
-        res.redirect('/taps');
+    tapModel.update(req.params.id, req.params.keg).then(function(tap) {
+        io.emit('keg tapped', {tap});
+        res.redirect('/admin');
     });
 };
 

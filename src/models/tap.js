@@ -32,9 +32,14 @@ exports.find = function(id) {
 }
 
 exports.update = function(id, keg, volume=config.defaultKegVolume) {
-    return db.ref(`/taps/${id}`).set({
-        'keg': keg,
-        'volume': volume,
-        'initialVolume': volume
+    return new Promise(function(resolve, reject) {
+        var tap = {
+            'keg': keg,
+            'volume': volume,
+            'initialVolume': volume
+        };
+        db.ref(`/taps/${id}`).set(tap).then(function(snap) {
+            resolve(tap);
+        });
     });
 }
