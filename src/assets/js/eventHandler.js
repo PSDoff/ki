@@ -10,10 +10,6 @@ $(function () {
             roundedPercentVolume = ((volume / originalVolume) * 100).toFixed(0);
 
         if (tapContainer.length > 0) {
-            tapContainer.find('.beer-container').addClass('pouring');
-            setTimeout(function () {
-                tapContainer.find('.beer-container').removeClass('pouring');
-            }, 2500);
             tapContainer.find('.beer-battery .percent-remaining').text(roundedPercentVolume + '%');
             // tapContainer.find('.beer-foam').css('bottom', percentVolume + '%');
 
@@ -23,11 +19,19 @@ $(function () {
     });
 
     socket.on('pouring', function(data) {
-        console.log(`${data.tap} pouring: ${data.volume}`);
+        var tapContainer = $(".tap-" + data.tap);
+        console.log('pouring ' + data.tap);
+        tapContainer.find('.beer-container').addClass('pouring');
+    });
+
+    socket.on('not pouring', function(data) {
+        var tapContainer = $(".tap-" + data.tap);
+        tapContainer.find('.beer-container').removeClass('pouring');
     });
 
     socket.on('pouring complete', function(data) {
-        console.log(`${data.tap} complete: ${data.volume}`);
+        var tapContainer = $(".tap-" + data.tap);
+        tapContainer.find('.beer-container').removeClass('pouring');
     });
 
     socket.on('maintenance', function(data) {

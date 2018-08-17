@@ -56,6 +56,12 @@ function firePouringEvent(tap) {
     });
 }
 
+function fireNotPouringEvent(key) {
+    io.emit('not pouring', {
+        tap: key
+    });
+}
+
 function firePouringCompleteEvent(pour, key) {
     io.emit('pouring complete', {
         tap: key,
@@ -72,6 +78,7 @@ function checkForCompletePours() {
         var pour = currentPours[key];
         
         if (pour.volume == 0) {
+            fireNotPouringEvent(key);
             return;
         } else if (pour.volume > pour.previousVolume) {
             pour.previousVolume = pour.volume;
