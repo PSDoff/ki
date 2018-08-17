@@ -14,7 +14,7 @@ $(function () {
             setTimeout(function () {
                 tapContainer.find('.beer-container').removeClass('pouring');
             }, 2500);
-            tapContainer.find('.beer-battery .percent-remaining').text(percentVolume);
+            tapContainer.find('.beer-battery .percent-remaining').text(roundedPercentVolume + '%');
             // tapContainer.find('.beer-foam').css('bottom', percentVolume + '%');
 
             tapContainer.find('.volume').css('height', percentVolume + '%');
