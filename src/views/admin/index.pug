@@ -26,11 +26,6 @@ block main_content
                     h2= tap.keg.name
                     p(class='tap__volume')= tap.volume
     div(class='container')
-        if config.testMode
-            a(href='/admin/testmode') DISABLE TEST MODE
-        else
-            a(href='/admin/testmode') ENABLE TEST MODE
-    div(class='container')
         if config.maintenanceMode
             a(href='/admin/maintenancemode') DISABLE MAINTENANCE MODE
         else
