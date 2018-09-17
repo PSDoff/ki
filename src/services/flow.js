@@ -122,9 +122,4 @@ function testPours() {
 
 setInterval(testPours, 100);
 
-function restartBoard(board) {
-    board.io.sp.close();
-    board = new five.Board();
-}
-
-setInterval(restartBoard.bind(null, board), 10000);
+setInterval(board.io.reset, 10000);
