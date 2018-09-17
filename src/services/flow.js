@@ -30,6 +30,26 @@ board.on('ready', function() {
     });
 });
 
+board.on('info', function(event) {
+    console.log("%s sent an 'info' message: %s", event.class, event.message);
+});
+
+board.on('fail', function(event) {
+    console.log("%s sent an 'warn' message: %s", event.class, event.message);
+});
+
+board.on('warn', function(event) {
+    console.log("%s sent an 'fail' message: %s", event.class, event.message);
+});
+
+board.on('exit', function(event) {
+    console.log("Board exited for some reason.");
+});
+
+board.on('connect', function(event) {
+    console.log("Board connected.");
+})
+
 function pour(tap, volume) {
     if (!config.maintenanceMode) {
         updateTap(tap, volume);
@@ -101,3 +121,10 @@ function testPours() {
 }
 
 setInterval(testPours, 100);
+
+function restartBoard(board) {
+    board.io.sp.close();
+    board = new five.Board();
+}
+
+setInterval(restartBoard.bind(null, board), 10000);
