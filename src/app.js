@@ -49,5 +49,5 @@ http.listen(3000, function(){
 if (config.production == true) {
     setTimeout(function() {
         process.exit();
-    }, 20000);
+    }, config.restartInterval);
 }

@@ -6,6 +6,7 @@ const global = {
     maintenanceMode: false,
     pourFinishingFrequency: 3000,
     defaultKegVolume: 4400,
+    restartInterval: 2 * 60 * 60 * 1000,
     production: true
 };
 
