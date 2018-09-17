@@ -20,14 +20,16 @@ board.on('ready', function() {
         type: "digital",
         freq: 1
     });
-
-    sensorLeft.on('change', function() {
-        pour('left', 1);
-    });
-
-    sensorRight.on('change', function() {
-        pour('right', 1);
-    });
+    
+    setTimeout(function() {
+        sensorLeft.on('change', function() {
+            pour('left', 1);
+        });
+    
+        sensorRight.on('change', function() {
+            pour('right', 1);
+        });
+    }, 2000);
 });
 
 board.on('info', function(event) {
