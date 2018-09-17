@@ -121,5 +121,3 @@ function testPours() {
 }
 
 setInterval(testPours, 100);
-
-setInterval(board.io.reset, 10000);

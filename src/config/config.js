@@ -6,12 +6,14 @@ const global = {
     maintenanceMode: false,
     pourFinishingFrequency: 3000,
     defaultKegVolume: 4400,
+    production: true
 };
 
 const dev = {
     firebase: {
         name: 'keg-intelligence-dev'
     },
+    production: false
 };
 
 const config = {
