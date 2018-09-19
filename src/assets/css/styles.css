@@ -507,11 +507,6 @@ main {
   max-height: 100vh;
 }
 
-.tap-poster img.pouring {
-  -webkit-filter: blur(10px);
-          filter: blur(10px);
-}
-
 .tap-poster .pour-animation {
   position: absolute;
   top: 0;
@@ -552,6 +547,14 @@ main {
 
 .tap-info {
   position: relative;
+}
+
+.tap-poster img.pouring {
+  -webkit-filter: blur(10px);
+          filter: blur(10px);
+  transition: -webkit-filter 1000ms linear;
+  transition: filter 1000ms linear;
+  transition: filter 1000ms linear, -webkit-filter 1000ms linear;
 }
 
 .beer-container {

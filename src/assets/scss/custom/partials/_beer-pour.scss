@@ -1,5 +1,10 @@
 // Credit to https://codepen.io/TimRuby/pen/jcLia
 
+.tap-poster img.pouring {
+    filter: blur(10px);
+    transition: filter 1000ms linear;
+}
+
 .beer-container {
     height: 100vh;
     margin: 0 auto;
