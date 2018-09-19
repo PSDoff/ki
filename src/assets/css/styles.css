@@ -507,6 +507,11 @@ main {
   max-height: 100vh;
 }
 
+.tap-poster img.pouring {
+  -webkit-filter: blur(10px);
+          filter: blur(10px);
+}
+
 .tap-poster .pour-animation {
   position: absolute;
   top: 0;

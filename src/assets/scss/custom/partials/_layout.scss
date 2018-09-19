@@ -16,6 +16,10 @@ main {
 
     img {
         max-height: 100vh;
+
+        &.pouring {
+           filter: blur(10px);
+        }
     }
 
     .pour-animation {

@@ -22,16 +22,20 @@ $(function () {
         var tapContainer = $(".tap-" + data.tap);
         console.log('pouring ' + data.tap);
         tapContainer.find('.beer-container').addClass('pouring');
+        tapContainer.find('.tap-poster img').addClass('pouring');
+
     });
 
     socket.on('not pouring', function(data) {
         var tapContainer = $(".tap-" + data.tap);
         tapContainer.find('.beer-container').removeClass('pouring');
+        tapContainer.find('.tap-poster img').removeClass('pouring');
     });
 
     socket.on('pouring complete', function(data) {
         var tapContainer = $(".tap-" + data.tap);
         tapContainer.find('.beer-container').removeClass('pouring');
+        tapContainer.find('.tap-poster img').removeClass('pouring');
     });
 
     socket.on('maintenance', function(data) {
@@ -61,8 +65,11 @@ $(function () {
                 $(tapId).attr('data-volume-percent', percentVolume);
 
                 $(tapId).find('.beer-container').addClass('pouring');
+                $(tapId).find('.tap-poster img').addClass('pouring');
+
                 setTimeout(function () {
                     $(tapId).find('.beer-container').removeClass('pouring');
+                    $(tapId).find('.tap-poster img').removeClass('pouring');
                 }, 2500);
 
                 $(tapId).find('.volume').css('height', percentVolume + '%');
@@ -81,8 +88,11 @@ $(function () {
                 $(tapId).attr('data-volume-percent', percentVolume);
 
                 $(tapId).find('.beer-container').addClass('pouring');
+                $(tapId).find('.tap-poster img').addClass('pouring');
+
                 setTimeout(function(){
                     $(tapId).find('.beer-container').removeClass('pouring');
+                    $(tapId).find('.tap-poster img').removeClass('pouring');
                 }, 2500);
 
                 $(tapId).find('.volume').css('height', percentVolume + '%');
