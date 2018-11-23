@@ -8,7 +8,6 @@ aside(class=`tap-info`)
     // Beer volume / Beer Battery (could be a snippet)
     - percentageRemaining = Math.round((tap.volume/tap.initialVolume)*100)
     div(class=`beer-battery`)
-        span(class=`percent-remaining`) #{percentageRemaining}%
         div(class=`volume-container`)
             div(class=`volume` data-beer-colour=`${tap.keg.colour}` style=`background-color: #${tap.keg.colour}`)
         img(src=`/assets/images/svg/beer-keg-battery.svg`)
