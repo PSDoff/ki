@@ -8,6 +8,6 @@ $(function () {
             .animate({
                 height: parseInt($(this).data('volumePercent')).toFixed(0) + '%'
             }, 700);
-    })
+    })    
 
 });

@@ -10,7 +10,7 @@ aside(class=`tap-info`)
     div(class=`beer-battery`)
         span(class=`percent-remaining`) #{percentageRemaining}%
         div(class=`volume-container`)
-            div(class=`volume`)
+            div(class=`volume` data-beer-colour=`${tap.keg.colour}` style=`background-color: #${tap.keg.colour}`)
         img(src=`/assets/images/svg/beer-keg-battery.svg`)
 
 article(class=`tap-poster`)

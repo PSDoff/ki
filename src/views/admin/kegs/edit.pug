@@ -26,6 +26,9 @@ block main_content
             label(for='description') Description
             input#description.form-control(type='text', value=`${keg.description}` name='description')
         div.form-group
+            label(for='colour') Colour
+            input#description.form-control(type='text', value=`${keg.colour}` name='colour')
+        div.form-group
             label(for='logo') Logo Image
             img(src=`${keg.images.logo}` alt=`${keg.name}` width='200px')
             input#image.form-control(type='file', name='logo')

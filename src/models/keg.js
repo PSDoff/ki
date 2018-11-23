@@ -9,6 +9,7 @@ exports.dummy = {
         description: '',
         brand: '',
         tasting: '',
+        colour: ''
     }
 };
 
