@@ -98,8 +98,6 @@ function checkForCompletePours() {
     Object.keys(currentPours).forEach(function(key) {
         var pour = currentPours[key];
 
-        console.log(key + ': ' + pour.previousVolume + ' -> ' + pour.volume);
-        
         if (pour.volume == 0) {
             fireNotPouringEvent(key);
             return;
@@ -118,8 +116,7 @@ function checkForCompletePours() {
 function validatePour(key, pour) {
     // It's possible that a drip may come through the line, or there may be electrical interference.
     // We check if the flow is sufficient enough to be considered a real pour to get around this.
-
-    if (pour.previousVolume + 5 < pour.volume) {
+    if (pour.previousVolume + config.flowThreshold < pour.volume) {
         firePouringEvent(key);
     } 
 }
