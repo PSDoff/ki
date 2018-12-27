@@ -4,7 +4,7 @@ const global = {
     },
     testMode: false,
     maintenanceMode: false,
-    pourFinishingFrequency: 3000,
+    pourFinishingFrequency: 500,
     defaultKegVolume: 4400,
     restartInterval: 2 * 60 * 60 * 1000,
     production: true
