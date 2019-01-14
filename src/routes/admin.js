@@ -19,5 +19,6 @@ router.post('/taps/:id/update/:keg', taps_controller.update);
 
 router.get('/testmode', admin_controller.testMode);
 router.get('/maintenancemode', admin_controller.maintenanceMode);
+router.get('/refreshpage', admin_controller.refreshPage);
 
 module.exports = router;

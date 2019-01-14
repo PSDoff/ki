@@ -29,3 +29,8 @@ exports.maintenanceMode = function(req, res, next) {
     io.emit('maintenance', {enabled: config.maintenanceMode});
     res.redirect('/admin');
 }
+
+exports.refreshPage = function(req, res, next) {
+    io.emit('reload', {});
+    res.redirect('/admin');
+}
