@@ -47,7 +47,7 @@ $(function () {
         }
     });
 
-    socket.on('keg tapped', function(data) {
+    socket.on('reload', function(data) {
         location.reload();
     });
 

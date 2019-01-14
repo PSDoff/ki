@@ -39,6 +39,7 @@ exports.update = function(req, res) {
                 res.redirect(`/admin/kegs/${req.params.id}/edit`);
             });
         }
+        io.emit('reload', {keg});
     });
 };
 

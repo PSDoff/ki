@@ -49,7 +49,7 @@ exports.edit = function(req, res) {
 
 exports.update = function(req, res) {
     tapModel.update(req.params.id, req.params.keg).then(function(tap) {
-        io.emit('keg tapped', {tap});
+        io.emit('reload', {tap});
         res.redirect('/admin');
     });
 };
