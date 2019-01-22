@@ -56,6 +56,7 @@ function pour(tap, volume) {
     if (!config.maintenanceMode) {
         updateTap(tap, volume);
         updatePour(tap, volume);
+        firePouringEvent(tap);
     }
 }
 
@@ -102,7 +103,6 @@ function checkForCompletePours() {
             fireNotPouringEvent(key);
             return;
         } else if (pour.volume > pour.previousVolume) {
-            validatePour(key, pour);
             pour.previousVolume = pour.volume;
         } else {
             var clonedPour = Object.assign({}, pour);
@@ -111,14 +111,6 @@ function checkForCompletePours() {
             pourModel.create(clonedPour, key);
         }
     });
-}
-
-function validatePour(key, pour) {
-    // It's possible that a drip may come through the line, or there may be electrical interference.
-    // We check if the flow is sufficient enough to be considered a real pour to get around this.
-    if (pour.previousVolume + config.flowThreshold < pour.volume) {
-        firePouringEvent(key);
-    } 
 }
 
 setInterval(checkForCompletePours, config.pourFinishingFrequency);
