@@ -4,8 +4,7 @@ const global = {
     },
     testMode: false,
     maintenanceMode: false,
-    pourFinishingFrequency: 500, // Check flow state every n milliseconds.
-    flowThreshold: 4, // Minimum flow required to count as flowing. (sensor ticks per pourFinishingFrequency milliseconds)
+    pourFinishingFrequency: 3000, // Check flow state every n milliseconds.
     defaultKegVolume: 4400,
     restartInterval: 2 * 60 * 60 * 1000, // App dies every n milliseconds. This keeps the Arduino from sleeping. App gets rebooted by forever.
     production: true
