@@ -30,7 +30,7 @@ exports.maintenanceMode = function(req, res, next) {
     res.redirect('/admin');
 }
 
-exports.refreshPage = function(req, res, next) {
+exports.refreshDisplays = function(req, res, next) {
     io.emit('reload', {});
     res.redirect('/admin');
 }
