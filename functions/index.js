@@ -22,9 +22,7 @@ function postSlackMessage(message, channel) {
 exports.chat = functions.https.onRequest((request, response) => {
     let payload = request.body;
     response.sendStatus(200);
-
-    // Only respond if the message was not triggered by the bot itself.
-    if ( payload.event.user ) {
+    if ( payload.event && payload.event.user ) {
         let channel = payload.event.channel;
         let left = getTap('left');
         let right = getTap('right');
