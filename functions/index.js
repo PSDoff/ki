@@ -4,20 +4,7 @@ const axios = require('axios');
 
 base.initializeApp(functions.config().firebase);
 
-function postSlackMessage(message, channel) {
-    const slackApi = axios.create({
-        baseURL: 'https://slack.com/api',
-        headers: {
-            'Authorization': `Bearer ${functions.config().slack.token}`,
-            'Content-Type': 'application/json'
-        }
-      });
-
-    slackApi.post('/chat.postMessage', {
-        channel: channel,
-        text: message
-    });
-}
+// Firebase Cloud Functions
 
 exports.chat = functions.https.onRequest((request, response) => {
     let payload = request.body;
@@ -33,40 +20,36 @@ exports.chat = functions.https.onRequest((request, response) => {
     } 
 });
 
-exports.leftRunningLow = functions.database.ref('/taps/left').onUpdate((snap, context) => {
-    const snapshot = snap.after;
-    const tap = snapshot.val();
-    const percentage = getLowWarning(tap.volume);
-
+exports.runningLow = functions.database.ref('/pours/{pourId}').onCreate((snap, context) => { 
+    const pour = snap.val();
+    const percentage = getLowWarning(pour.beforeVolume, pour.afterVolume);
     if (percentage != null) {
-        runningLowMessage('left', tap, percentage).then(message => {
-            postSlackMessage(message, '#kegerator');
-        })
+        message = runningLowMessage(pour, percentage);
+        postSlackMessage(message, '#kegerator');
         return true;
     }
     return false;
 });
 
-exports.rightRunningLow = functions.database.ref('/taps/right').onUpdate((snap, context) => {
-    const snapshot = snap.after;
-    const tap = snapshot.val();
-    const percentage = getLowWarning(tap.volume);
-    
-    if (percentage != null) {
-        runningLowMessage('right', tap, percentage).then(message => {
-            postSlackMessage(message, '#kegerator');
-        })
-        return true;
-    }
-    return false;
-});
+// Helper functions
 
-function runningLowMessage(key, tap, percentage) {
-    return new Promise((resolve, reject) => {
-        getKeg(tap.keg).then(keg => {
-            resolve(`The ${key} keg, ${keg.name}, is at ${percentage}%!`)
-        });
+function postSlackMessage(message, channel) {
+    const slackApi = axios.create({
+        baseURL: 'https://slack.com/api',
+        headers: {
+            'Authorization': `Bearer ${functions.config().slack.token}`,
+            'Content-Type': 'application/json'
+        }
+      });
+
+    slackApi.post('/chat.postMessage', {
+        channel: channel,
+        text: message
     });
+}
+
+function runningLowMessage(pour, percentage) {
+    return `The ${pour.tap} keg, ${pour.keg.name}, is at ${formatPercentage(percentage)}%!`;
 }
 
 function getTap(id) {
@@ -103,26 +86,23 @@ function getKeg(id) {
 }
 
 function defaultMessage(tap) {
-    return `${tap.keg.name} is on the ${tap.key} tap. The keg is ${getPercentage(tap.volume)}% full.`
+    return `${tap.keg.name} is on the ${tap.key} tap. The keg is ${formatPercentage(getPercentage(tap.volume))}% full.`
 }
 
 function getPercentage(volume) {
-    return Math.floor(volume / 4400 * 100);
+    return parseFloat(volume) / 4400.0;
 }
 
-function getLowWarning(volume) {
-    switch(volume) {
-        case 4400:
-            return '100';
-        case 1100:
-            return '25';
-        case 440:
-            return '10';
-        case 220:
-            return '5';
-        case 0:
-            return '0';
-        default:
-            return null;
+function formatPercentage(percentage) {
+    return Math.floor(percentage * 100)
+}
+
+function getLowWarning(beforeVolume, afterVolume) {
+    const levels = [0.75, 0.50, 0.25, 0.10, 0.5, 0];
+    for ( i = 0; i < levels.length; i++ ) {
+        level = levels[i];
+        if (getPercentage(beforeVolume) > level && level >= getPercentage(afterVolume)) {
+            return level;
+        }
     }
 }

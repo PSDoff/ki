@@ -3,9 +3,11 @@ var board = new five.Board();
 var db = require('./firebase').db;
 
 var pourModel = require('../models/pour');
+var tapModel = require('../models/tap');
+
 var currentPours = {
-    'left': { 'volume': 0, 'previousVolume': 0 },
-    'right': { 'volume': 0, 'previousVolume': 0 }
+    'left': { 'volume': 0, 'previousVolume': 0, 'previousVolume': 0 },
+    'right': { 'volume': 0, 'previousVolume': 0, 'previousVolume': 0 }
 };
 
 board.on('ready', function() {
@@ -54,21 +56,9 @@ board.on('connect', function(event) {
 
 function pour(tap, volume) {
     if (!config.maintenanceMode) {
-        updateTap(tap, volume);
         updatePour(tap, volume);
         firePouringEvent(tap);
     }
-}
-
-function updateTap(tap, quantity) {
-    tapRef = db.ref(`taps/${tap}`);
-    
-    tapRef.child('volume').transaction(function(volume) {
-        if (volume) {
-            volume = volume - quantity;
-        }
-        return volume;
-    });
 }
 
 function firePouringEvent(tap) {
@@ -95,6 +85,27 @@ function updatePour(tap, volume) {
     currentPours[tap].volume += volume;
 }
 
+function setPourBeforeVolume(key) {
+    tapModel.find(key).then(function(tap) {
+        currentPours[key].beforeVolume = tap.volume;
+    })
+}
+
+function completePour(pour, tap) {
+    firePouringCompleteEvent(pour, tap);
+    var afterVolume = pour.beforeVolume - pour.volume;
+    pour.afterVolume = afterVolume;
+    pour.tap = tap;
+    var clonedPour = Object.assign({}, pour);
+    tapModel.updateVolume(tap, afterVolume);
+    pourModel.create(clonedPour, tap);
+    resetPour(tap);
+}
+
+function resetPour(tap) {
+    currentPours[tap] = { 'volume': 0, 'previousVolume': 0, 'previousVolume': 0 };
+}
+
 function checkForCompletePours() {
     Object.keys(currentPours).forEach(function(key) {
         var pour = currentPours[key];
@@ -103,12 +114,12 @@ function checkForCompletePours() {
             fireNotPouringEvent(key);
             return;
         } else if (pour.volume > pour.previousVolume) {
+            if ( pour.previousVolume == 0 ) {
+                setPourBeforeVolume(key);
+            }
             pour.previousVolume = pour.volume;
         } else {
-            var clonedPour = Object.assign({}, pour);
-            firePouringCompleteEvent(clonedPour, key);
-            currentPours[key] = { 'volume': 0, 'previousVolume': 0 };
-            pourModel.create(clonedPour, key);
+            completePour(pour, key);
         }
     });
 }

@@ -43,3 +43,15 @@ exports.update = function(id, keg, volume=config.defaultKegVolume) {
         });
     });
 }
+
+exports.updateVolume = function(id, volume) {
+    return new Promise(function(resolve, reject) {
+        if ( volume < 0 ) {
+            volume = 0;
+        }
+        
+        db.ref(`taps/${id}/volume`).set(volume).then(function(snap) {
+            resolve(volume);
+        });
+    });
+}
