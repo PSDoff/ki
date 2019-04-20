@@ -93,9 +93,12 @@ function setPourBeforeVolume(key) {
 
 function completePour(pour, tap) {
     firePouringCompleteEvent(pour, tap);
-    var afterVolume = pour.beforeVolume - pour.volume;
+
+    var afterVolume = pour.beforeVolume - pour.volume
+    if (afterVolume < 0) { afterVolume = 0 }
     pour.afterVolume = afterVolume;
     pour.tap = tap;
+
     var clonedPour = Object.assign({}, pour);
     tapModel.updateVolume(tap, afterVolume);
     pourModel.create(clonedPour, tap);

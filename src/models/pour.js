@@ -18,7 +18,7 @@ exports.dummy = {
 
 exports.create = function(pour, tapKey) {
     return new Promise(function(resolve) {
-        if (config.testMode) {
+        if (config.testMode || pour.beforeVolume == 0) {
             resolve(pour);
             return;
         } else {
